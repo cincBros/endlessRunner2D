@@ -34,7 +34,7 @@ public class spawnerH : MonoBehaviour
         }
         else if (score.scoreValue%points != 0) isIncremented = false;
 
-        powerUp.speed = bird.speed = runner.speed = cone.speed = speed;
+        PUPickUp.speed = bird.speed = runner.speed = cone.speed = speed;
         
     }
 
@@ -51,7 +51,7 @@ public class spawnerH : MonoBehaviour
         else obj = powerUpPrefab;
 
         GameObject a = Instantiate(obj) as GameObject;
-
+        Debug.Log(n);
     }
 
     IEnumerator runnerWave()

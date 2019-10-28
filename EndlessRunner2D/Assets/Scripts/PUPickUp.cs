@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class powerUp : MonoBehaviour
+public class PUPickUp : MonoBehaviour
 {
     public static float speed;
     public float points;
 
     private Vector2 screenBounds;
+    public PU pu;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +35,16 @@ public class powerUp : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.tag == "player")
+        {
+            Pickup();
+        }
+    }
+
+    void Pickup()
+    {
+        Debug.Log("Picking up " + pu.name);
+        Destroy(gameObject);
+        if (Inventory.instance.Add(pu))
         {
             Destroy(gameObject);
         }
