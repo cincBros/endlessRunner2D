@@ -335,6 +335,10 @@ MonoBehaviour:
     type: 3}
   respawnTime: 2
   increment: 0.01
+  speed: 10
+  speedIncr: 0.5
+  maxSpeed: 20
+  points: 25
 --- !u!114 &386158615
 MonoBehaviour:
   m_ObjectHideFlags: 0

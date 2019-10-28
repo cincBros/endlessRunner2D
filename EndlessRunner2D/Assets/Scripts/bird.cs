@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class bird : MonoBehaviour
 {
-    public float speed = 10.0f;
+    public static float speed = 10.0f;
 
     private Vector2 screenBounds;
 

@@ -8,9 +8,16 @@ public class spawnerH : MonoBehaviour
     public GameObject conePrefab;
     public GameObject birdPrefab;
     public GameObject powerUpPrefab;
-
+    
     public float respawnTime;
     public float increment;
+
+    public float speed;
+    public float speedIncr;
+    public float maxSpeed;
+    public float points;
+
+    bool isIncremented;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +25,18 @@ public class spawnerH : MonoBehaviour
         StartCoroutine(runnerWave());
     }
 
+    private void Update()
+    {
+        if ((score.scoreValue%points == 0) && (!isIncremented) && (speed < maxSpeed))
+        {
+            speed += speedIncr;
+            isIncremented = true;
+        }
+        else if (score.scoreValue%points != 0) isIncremented = false;
+
+        powerUp.speed = bird.speed = runner.speed = cone.speed = speed;
+        
+    }
 
     private void spawnObject(int n)
     {
@@ -44,8 +63,8 @@ public class spawnerH : MonoBehaviour
                 respawnTime = respawnTime - increment;
             }
             yield return new WaitForSeconds(respawnTime);
-            //int rand = Random.Range(0, 1000) % 4;
-            int rand = 3;
+            int rand = Random.Range(0, 1000) % 4;
+            //int rand = 3; //modoGus
 
             spawnObject(rand);
         }

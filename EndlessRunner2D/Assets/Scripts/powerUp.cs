@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class powerUp : MonoBehaviour
 {
-    public float speed = 2.0f;
+    public static float speed;
+    public float points;
 
     private Vector2 screenBounds;
 
@@ -13,7 +14,6 @@ public class powerUp : MonoBehaviour
     {
         //Assignar limites de la camara
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
-        
         int rand = (Random.Range(1, 100) % 6) + 1;
         rand -= 5;
         this.transform.position = new Vector2(screenBounds.x * -2, rand);
@@ -37,5 +37,10 @@ public class powerUp : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void setSpeed(float s)
+    {
+        speed = s;
     }
 }

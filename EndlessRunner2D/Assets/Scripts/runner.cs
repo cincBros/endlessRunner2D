@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class runner : MonoBehaviour
 {
-    public float speed = 2.0f;
+    public static float speed = 2.0f;
 
     private Vector2 screenBounds;
 
