@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2210012926553571522}
   - component: {fileID: 1447620377221163419}
   m_Layer: 0
-  m_Name: molles
+  m_Name: pildora
   m_TagString: powerUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: -1387294351
   m_SortingLayer: -2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f56d5e7c99f2d5040a75141fb61822ee, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0e335113c0ebced4883c55033d485372, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -111,4 +111,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 0
-  pu: {fileID: 11400000, guid: 10c9f3121d13dc34c930b66e277bbb5d, type: 2}
+  pu: {fileID: 11400000, guid: 2670d04b13c404b44983c9de3700a7ed, type: 2}

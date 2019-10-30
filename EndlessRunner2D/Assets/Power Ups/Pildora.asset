@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 379b860c3aa71bc41a2515dcfc0dfa3a, type: 3}
-  m_Name: Molles
+  m_Name: Pildora
   m_EditorClassIdentifier: 
-  name: Molles
-  icon: {fileID: 21300000, guid: f56d5e7c99f2d5040a75141fb61822ee, type: 3}
+  name: Pildora
+  icon: {fileID: 21300000, guid: 0e335113c0ebced4883c55033d485372, type: 3}
   isDefault: 0

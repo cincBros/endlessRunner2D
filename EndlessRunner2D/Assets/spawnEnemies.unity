@@ -445,15 +445,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8fc8b6884b5e7047b6252fe029ab745, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runnerPrefab: {fileID: 2662869351001571711, guid: c741fea47579a6649bbbfc69dc5dfba3,
-    type: 3}
-  conePrefab: {fileID: 7607373222418443912, guid: 890dd2e9c795103458f909cdecb3998c,
-    type: 3}
-  birdPrefab: {fileID: 4207087710721271109, guid: 51a49e5f568212d47b9f442a29a495be,
-    type: 3}
-  powerUpPrefab: {fileID: 4590860320828725055, guid: 69b759e154556c248a31ff7177904608,
-    type: 3}
+  obstacles:
+  - {fileID: 2662869351001571711, guid: c741fea47579a6649bbbfc69dc5dfba3, type: 3}
+  - {fileID: 7607373222418443912, guid: 890dd2e9c795103458f909cdecb3998c, type: 3}
+  - {fileID: 4207087710721271109, guid: 51a49e5f568212d47b9f442a29a495be, type: 3}
+  powerUps:
+  - {fileID: 4590860320828725055, guid: 69b759e154556c248a31ff7177904608, type: 3}
+  - {fileID: 4590860320828725055, guid: 4ca27ba9a0bb22d4d9b9bbb7e65bb9b6, type: 3}
+  - {fileID: 4590860320828725055, guid: 7601f586da09f374d96275640a1f58e1, type: 3}
   respawnTime: 2
+  minRespawnTime: 0.5
   increment: 0.01
   speed: 10
   speedIncr: 0.5
@@ -994,15 +995,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 15
-    m_Right: 15
-    m_Top: 15
+    m_Left: 7
+    m_Right: 7
+    m_Top: 14
     m_Bottom: 15
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 40, y: 40}
-  m_Spacing: {x: 10, y: 10}
+  m_CellSize: {x: 50, y: 50}
+  m_Spacing: {x: 6, y: 7}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!114 &1214760002
@@ -1024,7 +1025,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: c5139cdfef90c4e4f98fb2ec67cc4ec4, type: 3}
-  m_Type: 1
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1203,6 +1204,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5376732318804527002, guid: 4cc3aab12bab7294eb2762927f4e2a55,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 5376732318804527002, guid: 4cc3aab12bab7294eb2762927f4e2a55,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6858934966161199466, guid: 4cc3aab12bab7294eb2762927f4e2a55,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4cc3aab12bab7294eb2762927f4e2a55, type: 3}

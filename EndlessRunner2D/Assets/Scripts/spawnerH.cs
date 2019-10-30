@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class spawnerH : MonoBehaviour
 {
-    public GameObject runnerPrefab;
-    public GameObject conePrefab;
-    public GameObject birdPrefab;
-    public GameObject powerUpPrefab;
+    public GameObject[] obstacles = new GameObject[3];
+    public GameObject[] powerUps = new GameObject[3];
     
     public float respawnTime;
+    public float minRespawnTime;
     public float increment;
 
     public float speed;
@@ -22,7 +21,7 @@ public class spawnerH : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(runnerWave());
+        StartCoroutine(spawnLoop());
     }
 
     private void Update()
@@ -40,30 +39,21 @@ public class spawnerH : MonoBehaviour
 
     private void spawnObject(int n)
     {
-        GameObject obj;
 
-        if (n == 0) obj = runnerPrefab;
-
-        else if (n == 1) obj = conePrefab;
-
-        else if (n == 2) obj = birdPrefab;
-
-        else obj = powerUpPrefab;
-
-        GameObject a = Instantiate(obj) as GameObject;
-        Debug.Log(n);
+        GameObject a = Instantiate(obstacles[n]) as GameObject;
+        Debug.Log("Spawning " + a.name);
     }
 
-    IEnumerator runnerWave()
+    IEnumerator spawnLoop()
     {
         while (true)
         {
-            if (respawnTime > 0.5)
+            if (respawnTime > minRespawnTime)
             {
                 respawnTime = respawnTime - increment;
             }
             yield return new WaitForSeconds(respawnTime);
-            int rand = Random.Range(0, 1000) % 4;
+            int rand = Random.Range(0, 3);
             //int rand = 3; //modoGus
 
             spawnObject(rand);

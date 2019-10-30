@@ -2,32 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class bird : MonoBehaviour
+public class bird : spawnable
 {
-    public static float speed = 10.0f;
-
-    private Vector2 screenBounds;
-
-    // Start is called before the first frame update
-    void Start()
+    public override void initialize()
     {
-        //Assignar limites de la camara
-        screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
-
-        int rand = (Random.Range(1, 100) % 6) +1;
-        rand -= 5;
-        this.transform.position = new Vector2(screenBounds.x * -2, rand);
+        name = "bird";
+        int rand = Random.Range(-1, 5);
+        yPos = rand;
+        Debug.Log(yPos);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        transform.Translate(-speed * Time.deltaTime, 0, 0);
-
-        //Detectar cuando esta fuera de camara para borrar
-        if (this.gameObject.transform.position.x < screenBounds.x * 3)
-        {
-            Destroy(this.gameObject);
-        }
-    }
 }
