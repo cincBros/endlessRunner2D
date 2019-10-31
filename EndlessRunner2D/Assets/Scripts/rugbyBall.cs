@@ -5,6 +5,7 @@ using UnityEngine;
 public class rugbyBall : MonoBehaviour
 {
     public float speed = 10.0f;
+    int rand;
 
     private Vector2 screenBounds;
 
@@ -14,7 +15,7 @@ public class rugbyBall : MonoBehaviour
         //Assignar limites de la camara
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
 
-        int rand = (Random.Range(-11, 11));
+        rand = (Random.Range(-11, 11));
         this.transform.position = new Vector2(rand, 10);
     }
 
