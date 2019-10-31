@@ -11,10 +11,11 @@ public class spawnerH : MonoBehaviour
     public float minRespawnTime;
     public float increment;
 
-    public float speed;
-    public float speedIncr;
-    public float maxSpeed;
-    public float points;
+    public float speed = 2f;
+    public float speedIncr = 0.01f;
+    public float maxSpeed = 0.5f;
+    public int points = 25;
+    public int ratioPowerUp = 25;
 
     bool isIncremented;
 
@@ -37,14 +38,18 @@ public class spawnerH : MonoBehaviour
         
     }
 
-    private void spawnObject(int n)
+    private void spawnPowerUp()
     {
+        int rand = Random.Range(0, powerUps.Length);
+        GameObject a = Instantiate(powerUps[rand]) as GameObject;
 
-        GameObject a;
-        
-        if (n < 3) a = Instantiate(powerUps[n]) as GameObject;
-  
-        else a = Instantiate(obstacles[n-3]) as GameObject;
+        Debug.Log("Spawning " + a.name);
+    }
+
+    private void spawnObstacle()
+    {
+        int rand = Random.Range(0, obstacles.Length);
+        GameObject a = Instantiate(obstacles[rand]) as GameObject;
        
         Debug.Log("Spawning " + a.name);
     }
@@ -58,10 +63,18 @@ public class spawnerH : MonoBehaviour
                 respawnTime = respawnTime - increment;
             }
             yield return new WaitForSeconds(respawnTime);
-            int rand = Random.Range(0, 6);
+
+            int rand = Random.Range(0, 100);
             //int rand = 3; //modoGus
 
-            spawnObject(rand);
+            if (rand <= ratioPowerUp)
+            {
+                spawnPowerUp();
+            }
+            else
+            {
+                spawnObstacle();
+            }
         }
     }
 

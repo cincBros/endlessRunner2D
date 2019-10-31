@@ -10,25 +10,38 @@ public class DayNightCicle : MonoBehaviour
     public GameObject sunset;
     public GameObject night;
 
+    public Vector2 centerPos = new Vector2(0, -37f);
+    public float radius = 40f;
+    public float sunAngle = 80f;
+    public float moonAngle = 150f;
+    public float sunAngleSpeed = -0.03f;
+    public float moonAngleSpeed = -0.04f;
+
     private bool isSunset = false, isNight = false;
 
-    public Vector2 centerPos = new Vector2(0, -25f);
-    public float radius = 30f;
-    public float sunAngle = 90f;
-    public float moonAngle = 270f;
-    public float sunAngleSpeed = 0.2f;
-    public float moonAngleSpeed = 0.3f;
-
     private Color sunsetColor;
+    private float maxAlphaSunset = 0.3f;
     private Color nightColor;
+    private float maxAlphaNight = 0.75f;
 
     // Start is called before the first frame update
     void Start()
     {
+        //sunAngle = Random.Range(0, 180);
+        //moonAngle = Random.Range(0, 180);
         updatePositions();
 
         sunsetColor = sunset.GetComponent<SpriteRenderer>().color;
         nightColor = night.GetComponent<SpriteRenderer>().color;
+
+        detectChanges();
+        if (isSunset)
+            sunsetColor.a = maxAlphaSunset;
+        if (isNight)
+            nightColor.a = maxAlphaNight;
+
+        sunset.GetComponent<SpriteRenderer>().color = sunsetColor;
+        night.GetComponent<SpriteRenderer>().color = nightColor;
     }
 
     private void updatePositions()
@@ -46,35 +59,41 @@ public class DayNightCicle : MonoBehaviour
 
     private void detectChanges()
     {
+        isSunset = (sunAngle <= 60 && sunAngle >= 35);
+        //    || (sunAngle >= 40 && sunAngle <= 47);
 
-        isSunset = (sunAngle >= 160 && sunAngle <= 220) ;
-
-        isNight = (sunAngle >= 180 && sunAngle <= 320);
+        isNight = (sunAngle <= 50  || sunAngle >= 150);
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        sunAngle += sunAngleSpeed;
-        moonAngle += moonAngleSpeed;
+        sunAngle = (sunAngle + sunAngleSpeed) % 180;
+        moonAngle = (moonAngle + moonAngleSpeed) % 180;
+        if (sunAngle < 0f)
+            sunAngle = 180f;
+        if (moonAngle < 0f)
+            moonAngle = 180f;
+
         updatePositions();
 
-        
         detectChanges();
+
+        float absSpeed = Mathf.Abs(sunAngleSpeed);
 
         if (isSunset)
         {
             if (sunsetColor.a < 0.3f)
             {
-                sunsetColor.a = sunsetColor.a + 0.01f;
+                sunsetColor.a = sunsetColor.a + 0.02f* absSpeed;
             }
         }
         else
         {
-            if (nightColor.a > 0)
+            if (sunsetColor.a > 0f)
             {
-                sunsetColor.a = sunsetColor.a - 0.01f;
+                sunsetColor.a = sunsetColor.a - 0.02f* absSpeed;
             }
         }
 
@@ -82,23 +101,23 @@ public class DayNightCicle : MonoBehaviour
 
         if (isNight)
         {
-            if (nightColor.a < 0.8f)
+            if (nightColor.a < 0.75f)
             {
-                nightColor.a = nightColor.a + 0.1f;
+                nightColor.a = nightColor.a + 0.02f* absSpeed;
             }
         }
         else
         {
-            if (nightColor.a > 0)
+            if (nightColor.a > 0f)
             {
-                nightColor.a = nightColor.a - 0.1f;
+                nightColor.a = nightColor.a - 0.02f* absSpeed;
             }
         }
 
         night.GetComponent<SpriteRenderer>().color = nightColor;
 
-        sun.transform.RotateAround(new Vector2(0, -10), Vector3.back, sunAngle * Time.deltaTime);
-        moon.transform.RotateAround(new Vector2(0, -10), Vector3.back, moonAngle * Time.deltaTime);
+        sun.transform.RotateAround(new Vector2(0, -10), Vector3.back, sunAngle * Mathf.Deg2Rad * Time.deltaTime);
+        moon.transform.RotateAround(new Vector2(0, -10), Vector3.back, moonAngle * Mathf.Deg2Rad * Time.deltaTime);
         
     }
 }
