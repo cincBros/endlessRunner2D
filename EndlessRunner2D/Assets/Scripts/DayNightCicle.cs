@@ -1,4 +1,4 @@
-﻿/*
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,8 +10,10 @@ public class DayNightCicle : MonoBehaviour
     public GameObject sunset;
     public GameObject night;
 
-    public Vector2 centerPos = new Vector2(0, -11f);
-    public float radius = 4f;
+    private bool isSunset = false, isNight = false;
+
+    public Vector2 centerPos = new Vector2(0, -25f);
+    public float radius = 30f;
     public float sunAngle = 90f;
     public float moonAngle = 270f;
     public float sunAngleSpeed = 0.2f;
@@ -42,6 +44,15 @@ public class DayNightCicle : MonoBehaviour
         moon.transform.position = new Vector2(posX, posY);
     }
 
+    private void detectChanges()
+    {
+
+        isSunset = (sunAngle >= 160 && sunAngle <= 220) ;
+
+        isNight = (sunAngle >= 180 && sunAngle <= 320);
+
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -49,53 +60,49 @@ public class DayNightCicle : MonoBehaviour
         moonAngle += moonAngleSpeed;
         updatePositions();
 
-        //sunsetColor.a += 0.001f;
-
-        //sunset.GetComponent<SpriteRenderer>().color = sunsetColor;
-
-        /*
+        
         detectChanges();
 
-        if (sunset)
+        if (isSunset)
         {
-            if (sunsetT.a < 0.3f)
+            if (sunsetColor.a < 0.3f)
             {
-                sunsetT.a = sunsetT.a + 0.0003f;
+                sunsetColor.a = sunsetColor.a + 0.01f;
             }
         }
         else
         {
-            if (sunsetT.a > 0)
+            if (nightColor.a > 0)
             {
-                sunsetT.a = sunsetT.a - 0.001f;
+                sunsetColor.a = sunsetColor.a - 0.01f;
             }
         }
 
-        sunsetP.GetComponent<SpriteRenderer>().color = sunsetT;
+        sunset.GetComponent<SpriteRenderer>().color = sunsetColor;
 
-        if (night)
+        if (isNight)
         {
-            if (nightT.a < 0.8f)
+            if (nightColor.a < 0.8f)
             {
-                nightT.a = nightT.a + 0.0014f;
+                nightColor.a = nightColor.a + 0.1f;
             }
         }
         else
         {
-            if (nightT.a > 0)
+            if (nightColor.a > 0)
             {
-                nightT.a = nightT.a - 0.0006f;
+                nightColor.a = nightColor.a - 0.1f;
             }
         }
 
-        nightP.GetComponent<SpriteRenderer>().color = nightT;
+        night.GetComponent<SpriteRenderer>().color = nightColor;
 
-        sun.transform.RotateAround(new Vector2(0, -10), Vector3.back, angleSpeed * Time.deltaTime);
-        moon.transform.RotateAround(new Vector2(0, -10), Vector3.back, angleSpeed * Time.deltaTime);
+        sun.transform.RotateAround(new Vector2(0, -10), Vector3.back, sunAngle * Time.deltaTime);
+        moon.transform.RotateAround(new Vector2(0, -10), Vector3.back, moonAngle * Time.deltaTime);
         
     }
 }
-*/
+/*
 
 
 using System.Collections;
@@ -202,4 +209,4 @@ public class DayNightCicle : MonoBehaviour
         moon.transform.RotateAround(new Vector2(0, -10), Vector3.back, angleSpeed * Time.deltaTime);
     }
 }
-
+*/

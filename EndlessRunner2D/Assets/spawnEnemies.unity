@@ -171,11 +171,11 @@ MonoBehaviour:
   moon: {fileID: 1675735919}
   sunset: {fileID: 2071913810}
   night: {fileID: 200520696}
-  centerPos: {x: 0, y: -10}
-  radius: 15
+  centerPos: {x: 0, y: -25}
+  radius: 30
   sunAngle: 90
   moonAngle: 270
-  sunAngleSpeed: 0.2
+  sunAngleSpeed: 1
   moonAngleSpeed: 0.3
 --- !u!1001 &60350126
 PrefabInstance:
@@ -1228,6 +1228,7 @@ GameObject:
   - component: {fileID: 1348661733}
   - component: {fileID: 1348661736}
   - component: {fileID: 1348661735}
+  - component: {fileID: 1348661737}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1307,6 +1308,28 @@ MonoBehaviour:
   speedIncr: 0.5
   maxSpeed: 20
   points: 25
+--- !u!114 &1348661737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1348661732}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df45049f466b9e34783c20101a545f67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sun: {fileID: 0}
+  moon: {fileID: 0}
+  sunset: {fileID: 0}
+  night: {fileID: 0}
+  centerPos: {x: 0, y: -11}
+  radius: 4
+  sunAngle: 90
+  moonAngle: 270
+  sunAngleSpeed: 0.2
+  moonAngleSpeed: 0.3
 --- !u!1001 &1461026760
 PrefabInstance:
   m_ObjectHideFlags: 0
