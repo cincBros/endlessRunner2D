@@ -6,7 +6,7 @@ public class spawnerV : MonoBehaviour
 {
     public GameObject ballPrefab;
 
-    public int points;
+    public int points = 25;
 
     bool spawned;
 

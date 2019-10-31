@@ -7,14 +7,15 @@ public class spawnerH : MonoBehaviour
     public GameObject[] obstacles = new GameObject[3];
     public GameObject[] powerUps = new GameObject[3];
     
-    public float respawnTime;
-    public float minRespawnTime;
-    public float increment;
+    public float respawnTime = 2f;
+    public float minRespawnTime = 0.5f;
+    public float increment = 0.01f;
 
-    public float speed;
-    public float speedIncr;
-    public float maxSpeed;
-    public float points;
+    public int powerUpRatio = 50;
+    public float speed = 10f;
+    public float speedIncr = 0.5f;
+    public float maxSpeed = 20f;
+    public int points = 25;
 
     bool isIncremented;
 
@@ -34,13 +35,20 @@ public class spawnerH : MonoBehaviour
         else if (score.scoreValue%points != 0) isIncremented = false;
 
         PUPickUp.speed = bird.speed = runner.speed = cone.speed = speed;
-        
+
     }
 
-    private void spawnObject(int n)
+    private void spawnObstacle()
     {
+        int i = Random.Range(0, obstacles.Length);
+        GameObject a = Instantiate(obstacles[i]) as GameObject;
+        Debug.Log("Spawning " + a.name);
+    }
 
-        GameObject a = Instantiate(obstacles[n]) as GameObject;
+    private void spawnPowerUp()
+    {
+        int i = Random.Range(0, powerUps.Length);
+        GameObject a = Instantiate(powerUps[i]) as GameObject;
         Debug.Log("Spawning " + a.name);
     }
 
@@ -53,10 +61,18 @@ public class spawnerH : MonoBehaviour
                 respawnTime = respawnTime - increment;
             }
             yield return new WaitForSeconds(respawnTime);
-            int rand = Random.Range(0, 3);
-            //int rand = 3; //modoGus
 
-            spawnObject(rand);
+            int rand = Random.Range(0, 100);
+            //int rand = 1; //modoGus
+            Debug.Log("RAND: " + rand);
+            if (rand <= powerUpRatio)
+            {
+                spawnPowerUp();
+            }
+            else
+            {
+                spawnObstacle();
+            }
         }
     }
 
