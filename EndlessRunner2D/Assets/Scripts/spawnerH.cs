@@ -40,7 +40,12 @@ public class spawnerH : MonoBehaviour
     private void spawnObject(int n)
     {
 
-        GameObject a = Instantiate(obstacles[n]) as GameObject;
+        GameObject a;
+        
+        if (n < 3) a = Instantiate(powerUps[n]) as GameObject;
+  
+        else a = Instantiate(obstacles[n-3]) as GameObject;
+       
         Debug.Log("Spawning " + a.name);
     }
 
@@ -53,7 +58,7 @@ public class spawnerH : MonoBehaviour
                 respawnTime = respawnTime - increment;
             }
             yield return new WaitForSeconds(respawnTime);
-            int rand = Random.Range(0, 3);
+            int rand = Random.Range(0, 6);
             //int rand = 3; //modoGus
 
             spawnObject(rand);

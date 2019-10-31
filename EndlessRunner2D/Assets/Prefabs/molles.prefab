@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4590860320828725055}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.856, y: 7.698, z: 0}
-  m_LocalScale: {x: 0.13853268, y: 0.13853268, z: 0.13853268}
+  m_LocalPosition: {x: 1.437, y: 7.117, z: 0}
+  m_LocalScale: {x: 0.53774476, y: 0.53774476, z: 0.53774476}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -97,7 +97,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 5.46
+  m_Radius: 1.4845154
 --- !u!114 &1447620377221163419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,5 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 919dbc7c3a040db4f94fedccc751808f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: spawnable
+  yPos: 0
   points: 0
   pu: {fileID: 11400000, guid: 10c9f3121d13dc34c930b66e277bbb5d, type: 2}
