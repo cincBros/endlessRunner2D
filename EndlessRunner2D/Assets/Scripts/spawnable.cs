@@ -49,4 +49,14 @@ public class spawnable : MonoBehaviour
     {
 
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (transform.tag == "enemy" && collision.transform.tag == "player" && (playerController.instance.teCasc || playerController.instance.tePildora))
+        {
+            Destroy(gameObject);
+        }
+
+
+    }
 }

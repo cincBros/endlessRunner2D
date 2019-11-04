@@ -6,14 +6,13 @@ using UnityEngine.UI;
 public class score : MonoBehaviour
 {
     Text scoreText;
-    public static bool viu;
+    
     public static double scoreValue;
     public float respawnTime = 0.5f;
 
     // Start is called before the first frame update
     void Start()
     {
-        viu = true;
         scoreValue = 0;
         scoreText = GetComponent<Text>();
         StartCoroutine(addScore());
@@ -27,7 +26,7 @@ public class score : MonoBehaviour
 
     IEnumerator addScore()
     {
-        while (viu)
+        while (playerController.instance.viu)
         {
             scoreValue++;
             yield return new WaitForSeconds(respawnTime);

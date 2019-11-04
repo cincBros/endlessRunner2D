@@ -173,8 +173,8 @@ MonoBehaviour:
   night: {fileID: 200520696}
   centerPos: {x: 0, y: -37}
   radius: 40
-  sunAngle: 80
-  moonAngle: 160
+  sunAngle: 0
+  moonAngle: 90
   sunAngleSpeed: -0.03
   moonAngleSpeed: -0.03
 --- !u!1 &74228868
@@ -203,7 +203,7 @@ Transform:
   m_GameObject: {fileID: 74228868}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 9.1, y: 7.7, z: 0}
-  m_LocalScale: {x: 0.27892, y: 0.27892, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 8272350}
   m_RootOrder: 0
@@ -246,7 +246,7 @@ SpriteRenderer:
   m_SortingLayerID: -1960194903
   m_SortingLayer: -4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 53b988416cb86014ba4b03d37cb361d7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4dc5f44071f10304faca2b14d2ce656f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -776,12 +776,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 519469411}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cddd58bde5bb4b144ad1d4db8b1da4b8, type: 3}
+  m_Script: {fileID: 11500000, guid: 63872b8174801c1449cb7eb6979942f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
   jumpForce: 20
+  mollesTime: 0
+  pildoraTime: 0
   grounded: 0
+  teCasc: 0
+  teMolles: 0
+  tePildora: 0
+  viu: 0
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
@@ -1382,7 +1388,7 @@ Transform:
   m_GameObject: {fileID: 1675735919}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8.8, y: -9.3, z: 0}
-  m_LocalScale: {x: 0.51, y: 0.51, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 8272350}
   m_RootOrder: 1
@@ -1425,7 +1431,7 @@ SpriteRenderer:
   m_SortingLayerID: -1960194903
   m_SortingLayer: -4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d9722558e65bb224a97f695905e96994, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6baf876ef493e1a4687f9372c5c70efc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

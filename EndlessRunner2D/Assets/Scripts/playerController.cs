@@ -2,15 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerCntroller : MonoBehaviour
+public class playerController : MonoBehaviour
 {
+    #region Singleton
+
+    public static playerController instance;
+
+    void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.LogWarning("More than one instance of Inventory found!");
+            return;
+        }
+
+        instance = this;
+    }
+
+    #endregion
 
     public float speed;
     public float jumpForce;
+    public float mollesTime, pildoraTime;
 
     int jumps;
 
     public bool grounded;
+    public bool teCasc, teMolles, tePildora;
+    public bool viu;
     public LayerMask whatIsGround;
 
     private Rigidbody2D myRigidbody;
@@ -20,6 +39,9 @@ public class playerCntroller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        viu = true;
+        teMolles = teCasc = tePildora = false;
+        mollesTime = pildoraTime = 0;
         jumps = 0;
         myRigidbody = GetComponent<Rigidbody2D>();
         myCollider = GetComponent<Collider2D>();
@@ -35,7 +57,8 @@ public class playerCntroller : MonoBehaviour
         {
             if (grounded || jumps < 1)
             {
-                myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce);
+                if (!teMolles) myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce);
+                else myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce*1.5f);
                 jumps++;
             }
         }
@@ -64,14 +87,46 @@ public class playerCntroller : MonoBehaviour
             myRigidbody.transform.Translate(new Vector2(0.1f, 0));
             myRigidbody.velocity = new Vector2(0, myRigidbody.velocity.y);
         }
+
+        if (mollesTime > 0.0f) mollesTime -= Time.deltaTime;
+        else teMolles = false;
+
+        if (pildoraTime > 0.0f) pildoraTime -= Time.deltaTime;
+        else tePildora = false;
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.tag == "prefab")
+        if (collision.transform.tag == "enemy")
         {
-            score.viu = false;
-            Destroy(gameObject);
+            if (teCasc)
+            {
+                teCasc = false;
+
+            }
+            else if (!tePildora)
+            {
+                viu = false;
+                Destroy(gameObject);
+            }  
         }
+    }
+
+    public void activarCasc()
+    {
+        teCasc = true;
+    }
+
+    public void activarMolles()
+    {
+        mollesTime = 10f;
+        teMolles = true;
+    }
+
+    public void activarPildora()
+    {
+        pildoraTime = 5f;
+        tePildora = true;
     }
 }

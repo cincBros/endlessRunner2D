@@ -8,6 +8,7 @@ TagManager:
   - prefab
   - powerUp
   - player
+  - enemy
   layers:
   - Default
   - TransparentFX

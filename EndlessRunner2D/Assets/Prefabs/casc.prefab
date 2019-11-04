@@ -111,7 +111,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: spawnable
-  xPos: 200
-  yPos: 0
   points: 0
   pu: {fileID: 11400000, guid: d8aaf1081f4d0e4438dce70d6741e79b, type: 2}

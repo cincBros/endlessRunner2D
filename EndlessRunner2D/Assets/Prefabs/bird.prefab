@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2818614616656740365}
   m_Layer: 0
   m_Name: bird
-  m_TagString: prefab
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,8 +113,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: spawnable
-  xPos: 200
-  yPos: 0
 --- !u!95 &2818614616656740365
 Animator:
   serializedVersion: 3

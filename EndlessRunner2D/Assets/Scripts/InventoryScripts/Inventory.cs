@@ -41,10 +41,10 @@ public class Inventory : MonoBehaviour {
 	void Update() {
         
         if (Input.GetButtonDown("UsePU1")) {
-			Remove(0);
+			if (canUse(pus[0].name)) Remove(0);
 		}
         else if (Input.GetButtonDown("UsePU2")) {
-			Remove(1);
+            if (canUse(pus[1].name)) Remove(1);
 		}
 	}
 	
@@ -75,8 +75,29 @@ public class Inventory : MonoBehaviour {
 		}
 		return true;
 	}
-	
-	public void Remove(int i) {
+
+    bool canUse(string namePU)
+    {
+        Debug.Log("canUse " + playerController.instance.teCasc);
+        if (namePU == "casc")
+        {
+            return (!playerController.instance.teCasc);
+        }
+        else if (namePU == "molles")
+        {
+            return (!playerController.instance.teMolles);
+        }
+        else if (namePU == "pildora")
+        {
+            return (!playerController.instance.tePildora);
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+    public void Remove(int i) {
 		
 		if (pus[i] == null) { return; }
 		

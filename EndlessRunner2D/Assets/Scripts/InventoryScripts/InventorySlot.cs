@@ -61,12 +61,13 @@ public class InventorySlot : MonoBehaviour {
                 y += scaleIncrease;
             }
 
-            Debug.Log(x + " " + y + " " + scaleIncrease);
+            //Debug.Log(x + " " + y + " " + scaleIncrease);
             icon.transform.localScale = new Vector3(x, y, z);
         }
     }
 
     public void ClearSlot() {
+        
         pu = null;
 		icon.sprite = null;
 		icon.enabled = false;

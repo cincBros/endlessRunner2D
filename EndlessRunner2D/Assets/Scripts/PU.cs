@@ -9,7 +9,17 @@ public class PU : ScriptableObject {
 	
     public void Use()
     {
-        Debug.Log("Using " + name);
+        if (name == "casc"){
+            playerController.instance.activarCasc();
+        }
+        else if (name == "molles")
+        {
+            playerController.instance.activarMolles();
+        }
+        else if (name == "pildora")
+        {
+            playerController.instance.activarPildora();
+        }
     }
 
 }

@@ -55,7 +55,6 @@ public class spawnerH : MonoBehaviour
         if (a.name == "cone")
         {
             int rand = Random.Range(0, 3);
-            Debug.Log(rand);
             for (int i=0; i<rand; i++)
             {
                 a = Instantiate(obstacles[idx]) as spawnable;
@@ -67,7 +66,7 @@ public class spawnerH : MonoBehaviour
 
     IEnumerator spawnLoop()
     {
-        while (true)
+        while (playerController.instance.viu)
         {
             if (respawnTime > minRespawnTime)
             {

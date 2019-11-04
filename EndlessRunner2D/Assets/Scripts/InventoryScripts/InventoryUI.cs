@@ -23,6 +23,7 @@ public class InventoryUI : MonoBehaviour {
 			slots[i].AddPU(inventory.pus[i]);
 		}
 		else {
+            slots[i].UsePU();
 			slots[i].ClearSlot();
 		}
 	}
