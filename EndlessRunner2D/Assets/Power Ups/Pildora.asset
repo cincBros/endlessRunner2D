@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Pildora
   m_EditorClassIdentifier: 
   name: Pildora
-  icon: {fileID: 21300000, guid: 0e335113c0ebced4883c55033d485372, type: 3}
+  icon: {fileID: 21300000, guid: 143fd899359c1db4393af2e83d346531, type: 3}
   isDefault: 0
