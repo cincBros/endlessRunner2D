@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class runner : spawnable
 {
-    public override void initialize()
+    private void Awake()
     {
         name = "runner";
         yPos = 3.3f;

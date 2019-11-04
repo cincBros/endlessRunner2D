@@ -8,6 +8,12 @@ public class PUPickUp : spawnable
 
     public PU pu;
 
+    private void Awake()
+    {
+        name = "powerUp";
+        yPos = 0;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.tag == "player")

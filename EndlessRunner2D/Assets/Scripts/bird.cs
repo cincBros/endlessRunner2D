@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class bird : spawnable
 {
-    public override void initialize()
+    private void Awake()
     {
         name = "bird";
-        int rand = Random.Range(-1, 5);
-        yPos = rand;
-        Debug.Log(yPos);
+        yPos = Random.Range(-1, 5);
     }
 
 }

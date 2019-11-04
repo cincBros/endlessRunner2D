@@ -7,10 +7,14 @@ public class cone : spawnable
     public Sprite[] coneSprites = new Sprite[3];
     private SpriteRenderer spr;
 
-    public override void initialize()
+    private void Awake()
     {
         name = "cone";
-        yPos = 4.2f;
+        yPos = 4.7f;
+    }
+
+    public override void initializeSprite()
+    {
         spr = GetComponent<SpriteRenderer>();
         int rand = Random.Range(0, coneSprites.Length);
         spr.sprite = coneSprites[rand];

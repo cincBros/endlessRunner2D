@@ -27,8 +27,8 @@ public class DayNightCicle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //sunAngle = Random.Range(0, 180);
-        //moonAngle = Random.Range(0, 180);
+        sunAngle = Random.Range(0, 180);
+        moonAngle = Random.Range(0, 180);
         updatePositions();
 
         sunsetColor = sunset.GetComponent<SpriteRenderer>().color;

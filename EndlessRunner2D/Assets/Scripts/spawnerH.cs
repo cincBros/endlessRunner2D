@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class spawnerH : MonoBehaviour
 {
-    public GameObject[] obstacles = new GameObject[3];
-    public GameObject[] powerUps = new GameObject[3];
+    public spawnable[] obstacles = new spawnable[3];
+    public spawnable[] powerUps = new spawnable[3];
     
     public float respawnTime;
     public float minRespawnTime;
@@ -41,17 +41,28 @@ public class spawnerH : MonoBehaviour
     private void spawnPowerUp()
     {
         int rand = Random.Range(0, powerUps.Length);
-        GameObject a = Instantiate(powerUps[rand]) as GameObject;
-
-        Debug.Log("Spawning " + a.name);
+        spawnable a = Instantiate(powerUps[rand]) as spawnable;
+        a.getStarted(0f);
     }
 
     private void spawnObstacle()
     {
-        int rand = Random.Range(0, obstacles.Length);
-        GameObject a = Instantiate(obstacles[rand]) as GameObject;
-       
-        Debug.Log("Spawning " + a.name);
+        int idx = Random.Range(0, obstacles.Length);
+        //int idx = 1; //conos
+        spawnable a = Instantiate(obstacles[idx]) as spawnable;
+        a.getStarted(0f);
+
+        if (a.name == "cone")
+        {
+            int rand = Random.Range(0, 3);
+            Debug.Log(rand);
+            for (int i=0; i<rand; i++)
+            {
+                a = Instantiate(obstacles[idx]) as spawnable;
+                a.getStarted(1f*i + 1f);
+            }
+        }
+
     }
 
     IEnumerator spawnLoop()
@@ -65,7 +76,7 @@ public class spawnerH : MonoBehaviour
             yield return new WaitForSeconds(respawnTime);
 
             int rand = Random.Range(0, 100);
-            //int rand = 3; //modoGus
+            //int rand = 100; //modoGus
 
             if (rand <= ratioPowerUp)
             {

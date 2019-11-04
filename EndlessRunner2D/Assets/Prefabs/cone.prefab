@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7607373222418443912}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.943, y: -3.562, z: 0}
-  m_LocalScale: {x: 0.32200742, y: 0.3747601, z: 0.143}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.22761416, y: 0.26490292, z: 0.101080984}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: -1387294351
   m_SortingLayer: -2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bae9f964f21f9d74ea4f1621e34f3509, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f861991f9ab36ee48b2a5bd607c28f94, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -110,8 +110,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19150e265080ab44885ed06f88adbcdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: spawnable
-  yPos: 0
+  name: '***w*'
+  xPos: 20
+  yPos: 3
   coneSprites:
   - {fileID: 21300000, guid: fd9725f6c1c0601449231574d74b2823, type: 3}
   - {fileID: 21300000, guid: f861991f9ab36ee48b2a5bd607c28f94, type: 3}
