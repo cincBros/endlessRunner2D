@@ -36,10 +36,13 @@ public class Inventory : MonoBehaviour {
 		for (int i=0; i<space; i++) {
             pus[i] = null;
 		}
-	}
+        count = 0;
+    }
 	
 	void Update() {
-        
+
+        if (count == 0) return;
+
         if (Input.GetButtonDown("UsePU1")) {
 			if (canUse(pus[0].name)) Remove(0);
 		}
@@ -58,7 +61,7 @@ public class Inventory : MonoBehaviour {
 			//sps.Add(sp);
 			bool stop = false;
 			int i = 0;
-			while (i < pus.Length && !stop) {
+			while (i < space && !stop) {
 				if (pus[i] == null) {
                     pus[i] = pu;
 					count++;

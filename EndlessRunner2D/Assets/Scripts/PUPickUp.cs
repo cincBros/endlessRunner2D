@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PUPickUp : spawnable
 {
     public float points;
 
     public PU pu;
+    public Slider slider;
 
     private void Awake()
     {

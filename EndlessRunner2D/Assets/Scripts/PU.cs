@@ -20,6 +20,8 @@ public class PU : ScriptableObject {
         {
             playerController.instance.activarPildora();
         }
+
+        Sliders.instance.AddSlider(this);
     }
 
 }
