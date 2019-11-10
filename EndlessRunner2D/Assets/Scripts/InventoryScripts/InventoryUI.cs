@@ -9,16 +9,11 @@ public class InventoryUI : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         inventory = Inventory.instance;
-		inventory.onItemChangedCallback += UpdateUI;
+		//inventory.onItemChangedCallback += UpdateUI;
 		slots = spParent.GetComponentsInChildren<InventorySlot>();
     }
 
-    // Update is called once per frame
-    void Update() {
-		
-    }
-	
-	void UpdateUI(int i) {
+	public void UpdateUI(int i) {
 		if (slots[i].pu == null) {
 			slots[i].AddPU(inventory.pus[i]);
 		}

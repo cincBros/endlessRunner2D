@@ -5,7 +5,7 @@ using UnityEngine;
 public class spawnable : MonoBehaviour
 {
     public static float speed = 10.0f;
-    new public string name = "spawnable";
+    public new string name = "spawnable";
 
     protected float xPos = 20f;
     protected float yPos = 3f;
@@ -23,21 +23,15 @@ public class spawnable : MonoBehaviour
     public void getStarted(float off = 0f)
     {
         //Assignar limites de la camara
-        initializeSprite();
+        InitializeSprite();
+        InitializeTimer();
         transform.position = new Vector2(xPos + off, -yPos);
     }
 
-    public void setOffsetX(float off)
-    {
-        Debug.Log("set: " + xPos);
-        transform.position = transform.position + new Vector3(off, 0, 0);
-    }
-
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         transform.Translate(-speed * Time.deltaTime, 0, 0);
-
         //Detectar cuando esta fuera de camara para borrar
         if (gameObject.transform.position.x < screenBounds.x * 3)
         {
@@ -45,10 +39,9 @@ public class spawnable : MonoBehaviour
         }
     }
 
-    public virtual void initializeSprite()
-    {
+    public virtual void InitializeSprite() { }
 
-    }
+    public virtual void InitializeTimer() { }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

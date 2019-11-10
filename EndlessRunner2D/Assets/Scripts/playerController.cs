@@ -53,6 +53,7 @@ public class playerController : MonoBehaviour
     {
         grounded = Physics2D.IsTouchingLayers(myCollider, whatIsGround);
 
+        // MOVE
         if (Input.GetKeyDown("up"))
         {
             if (grounded || jumps < 1)
@@ -80,19 +81,15 @@ public class playerController : MonoBehaviour
 
         }
 
+        // GROUND
         if (grounded) jumps = 0;
 
+        // COLISION
         if (myRigidbody.transform.position.x < screenBounds.x )
         {
             myRigidbody.transform.Translate(new Vector2(0.1f, 0));
             myRigidbody.velocity = new Vector2(0, myRigidbody.velocity.y);
         }
-
-        if (mollesTime > 0.0f) mollesTime -= Time.deltaTime;
-        else teMolles = false;
-
-        if (pildoraTime > 0.0f) pildoraTime -= Time.deltaTime;
-        else tePildora = false;
 
     }
 
@@ -113,20 +110,39 @@ public class playerController : MonoBehaviour
         }
     }
 
-    public void activarCasc()
+    public void activarCasc(bool activar)
     {
-        teCasc = true;
+        if (activar)
+        {
+            teCasc = true;
+        }
+        else
+        {
+            teCasc = false;
+        }
     }
 
-    public void activarMolles()
+    public void activarMolles(bool activar)
     {
-        mollesTime = 10f;
-        teMolles = true;
+        if (activar)
+        {
+            teMolles = true;
+        }
+        else
+        {
+            teMolles = false;
+        }
     }
 
-    public void activarPildora()
+    public void activarPildora(bool activar)
     {
-        pildoraTime = 5f;
-        tePildora = true;
+        if (activar)
+        {
+            tePildora = true;
+        }
+        else
+        {
+            tePildora = false;
+        }
     }
 }

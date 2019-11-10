@@ -1,20 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PUPickUp : spawnable
 {
-    public float points;
+    private float timeLeft;
+    private bool activated = false;
 
     public PU pu;
-    public Slider slider;
-
-    private void Awake()
-    {
-        name = "powerUp";
-        yPos = 0;
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -26,11 +19,71 @@ public class PUPickUp : spawnable
 
     void Pickup()
     {
-        Debug.Log("Picking up " + pu.name);
-        Destroy(gameObject);
-        if (Inventory.instance.Add(pu))
+        if (Inventory.instance.Add(this))
         {
-            Destroy(gameObject);
+            GetComponent<Collider2D>().enabled = false;
+            GetComponent<SpriteRenderer>().enabled = false;
         }
+    }
+
+    public void Use()
+    {
+        if (name == "casc")
+        {
+            playerController.instance.activarCasc(true);
+        }
+        else if (name == "molles")
+        {
+            playerController.instance.activarMolles(true);
+            Slids.instance.AddSlider(this);
+        }
+        else if (name == "pildora")
+        {
+            playerController.instance.activarPildora(true);
+            Slids.instance.AddSlider(this);
+        }
+
+        activated = true;
+        timeLeft = pu.time;
+    }
+
+    protected override void Update()
+    {
+        if (!activated)
+        {
+            base.Update();
+        }
+        else
+        {
+            if (activated && timeLeft > 0.0f)
+            {
+                timeLeft -= Time.deltaTime;
+            }
+            else
+            {
+                Debug.Log("STOP");
+                Remove();
+            }
+        }
+    }
+
+    public void Remove()
+    {
+        if (name == "casc")
+        {
+            playerController.instance.activarCasc(false);
+        }
+        else if (name == "molles")
+        {
+            playerController.instance.activarMolles(false);
+        }
+        else if (name == "pildora")
+        {
+            playerController.instance.activarPildora(false);
+        }
+
+        Slids.instance.Remove(this);
+        
+        Destroy(gameObject);
     }
 }

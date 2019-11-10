@@ -13,7 +13,7 @@ public class cone : spawnable
         yPos = 4.7f;
     }
 
-    public override void initializeSprite()
+    public override void InitializeSprite()
     {
         spr = GetComponent<SpriteRenderer>();
         int rand = Random.Range(0, coneSprites.Length);

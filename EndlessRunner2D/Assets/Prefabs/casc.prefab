@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8016154005842973607}
   - component: {fileID: 4627728427145186859}
   - component: {fileID: 2210012926553571522}
-  - component: {fileID: 1447620377221163419}
+  - component: {fileID: 7064501296763814642}
   m_Layer: 0
   m_Name: casc
   m_TagString: powerUp
@@ -98,7 +98,7 @@ CircleCollider2D:
   m_Offset: {x: -0.0000009187614, y: 0}
   serializedVersion: 2
   m_Radius: 1.4361492
---- !u!114 &1447620377221163419
+--- !u!114 &7064501296763814642
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,6 +110,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 919dbc7c3a040db4f94fedccc751808f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: spawnable
+  name: casc
   points: 0
   pu: {fileID: 11400000, guid: d8aaf1081f4d0e4438dce70d6741e79b, type: 2}

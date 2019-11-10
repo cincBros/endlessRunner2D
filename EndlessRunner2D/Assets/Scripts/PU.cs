@@ -3,25 +3,9 @@
 [CreateAssetMenu(fileName = "New PU", menuName = "Inventory/PU")]
 public class PU : ScriptableObject {
 	
-	new public string name = "New PU";
+	public new string name = "New PU";
 	public Sprite icon = null;
-	public bool isDefault = false;
-	
-    public void Use()
-    {
-        if (name == "casc"){
-            playerController.instance.activarCasc();
-        }
-        else if (name == "molles")
-        {
-            playerController.instance.activarMolles();
-        }
-        else if (name == "pildora")
-        {
-            playerController.instance.activarPildora();
-        }
+    public float time = 0.0f;
 
-        Sliders.instance.AddSlider(this);
-    }
 
 }

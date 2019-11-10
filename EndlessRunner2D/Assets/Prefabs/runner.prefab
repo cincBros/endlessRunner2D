@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12380a5b67a91894884d36fc76ce1462, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: spawnable
+  name: runner
 --- !u!70 &3624702085615830801
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

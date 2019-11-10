@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: molles
   icon: {fileID: 21300000, guid: 06a3d3d692409994fbf69c3ad2c560a6, type: 3}
-  isDefault: 0
+  time: 10

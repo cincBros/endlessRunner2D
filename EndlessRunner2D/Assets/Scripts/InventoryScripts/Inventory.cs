@@ -19,78 +19,81 @@ public class Inventory : MonoBehaviour {
 	
 	#endregion
 	
-	// TRIGGER
-	public delegate void OnItemChanged(int i);
-	public OnItemChanged onItemChangedCallback;
-	
-	
 	// ATRIBUTES
 	public int space = 2;
 	public int count = 0;
-	public PU[] pus;
-	
-	
-	// METHODS
-	void Start() {
-        pus = new PU[space];
+	public PUPickUp[] pus;
+
+    public Transform slotsParent;
+    InventorySlot[] slots = new InventorySlot[8];
+
+
+    // METHODS
+    void Start() {
+        pus = new PUPickUp[space];
 		for (int i=0; i<space; i++) {
             pus[i] = null;
 		}
         count = 0;
+        slots = slotsParent.GetComponentsInChildren<InventorySlot>();
     }
 	
 	void Update() {
 
-        if (count == 0) return;
-
-        if (Input.GetButtonDown("UsePU1")) {
-			if (canUse(pus[0].name)) Remove(0);
+        if (Input.GetButtonDown("UsePU1"))
+        {
+            Debug.Log("CanUse 1: " + canUse(pus[0].pu.name));
+            if (pus[0] != null && canUse(pus[0].pu.name))
+            {
+                Remove(0);
+            }
 		}
-        else if (Input.GetButtonDown("UsePU2")) {
-            if (canUse(pus[1].name)) Remove(1);
+        else if (Input.GetButtonDown("UsePU2"))
+        {
+            Debug.Log("CanUse 2: " + canUse(pus[1].pu.name));
+            if (pus[1] != null && canUse(pus[1].pu.name))
+            {
+                Remove(1);
+            }
 		}
 	}
 	
-	public bool Add(PU pu) {
-		if (!pu.isDefault) {
-			if (count >= space) {
-				Debug.Log("Not enough room.");
-				return false;
-			}
-			
-			//sps.Add(sp);
-			bool stop = false;
-			int i = 0;
-			while (i < space && !stop) {
-				if (pus[i] == null) {
-                    pus[i] = pu;
-					count++;
-					stop = true;
-				}
-				else {
-					i++;
-				}
-			}
-			
-			if (i < pus.Length && onItemChangedCallback != null) {
-				onItemChangedCallback.Invoke(i);
-			}
+	public bool Add(PUPickUp pu) {
+		if (count >= space) {
+			return false;
 		}
-		return true;
+			
+		//sps.Add(sp);
+		bool stop = false;
+		int i = 0;
+		while (i < space && !stop) {
+			if (pus[i] == null)
+            {
+                pus[i] = pu;
+                count++;
+				stop = true;
+			}
+			else {
+				i++;
+			}
+        }
+        Debug.Log("III: " + i);
+        slots[i].AddPU(pus[i]);
+
+        return true;
 	}
 
-    bool canUse(string namePU)
+    bool canUse(string name)
     {
-        Debug.Log("canUse " + playerController.instance.teCasc);
-        if (namePU == "casc")
+        if (name == "casc")
         {
             return (!playerController.instance.teCasc);
         }
-        else if (namePU == "molles")
+        else if (name == "molles")
         {
             return (!playerController.instance.teMolles);
         }
-        else if (namePU == "pildora")
+        else if (name == "pildora")
         {
             return (!playerController.instance.tePildora);
         }
@@ -101,16 +104,15 @@ public class Inventory : MonoBehaviour {
     }
 
     public void Remove(int i) {
+
+        Debug.Log("Using " + pus[i].name);
+        if (pus[i] == null) { return; }
 		
-		if (pus[i] == null) { return; }
-		
-		Debug.Log("Using " + pus[i].name);
         pus[i] = null;
 		count--;
-		
-		if (i < pus.Length && onItemChangedCallback != null) {
-			onItemChangedCallback.Invoke(i);
-		}
-	}
+
+        slots[i].UsePU();
+        slots[i].ClearSlot();
+    }
 	
 }
