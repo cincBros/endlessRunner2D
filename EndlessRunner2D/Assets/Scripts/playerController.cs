@@ -24,10 +24,11 @@ public class playerController : MonoBehaviour
     public float speed;
     public float jumpForce;
     public float mollesTime, pildoraTime;
+    public GameObject helmet;
 
-    int jumps;
-
-    public bool grounded;
+    
+    private int jumps;
+    public bool grounded, hasJumped;
     public bool teCasc, teMolles, tePildora;
     public bool viu;
     public LayerMask whatIsGround;
@@ -36,6 +37,8 @@ public class playerController : MonoBehaviour
     private Collider2D myCollider;
     private Vector2 screenBounds;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +46,7 @@ public class playerController : MonoBehaviour
         teMolles = teCasc = tePildora = false;
         mollesTime = pildoraTime = 0;
         jumps = 0;
+        hasJumped = false;
         myRigidbody = GetComponent<Rigidbody2D>();
         myCollider = GetComponent<Collider2D>();
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
@@ -51,21 +55,26 @@ public class playerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        grounded = Physics2D.IsTouchingLayers(myCollider, whatIsGround);
+        grounded = Physics2D.IsTouchingLayers(myCollider, whatIsGround) && !hasJumped;
 
         // MOVE
         if (Input.GetKeyDown("up"))
         {
-            if (!teMolles && (grounded || jumps < 1))
+            hasJumped = true;
+            if (!teMolles && (grounded || jumps < 2))
             {
                 myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce);
+                grounded = false;
             }
             else if (teMolles && grounded)
             {
                 myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce * 1.5f);
+                grounded = false;
             }
             jumps++;
+            gameObject.GetComponent<Animator>().SetBool("jump", true);
         }
+        else hasJumped = false;
         if (Input.GetKeyDown("down"))
         {
             if (!grounded)
@@ -85,7 +94,11 @@ public class playerController : MonoBehaviour
         }
 
         // GROUND
-        if (grounded) jumps = 0;
+        if (grounded)
+        {
+            jumps = 0;
+            gameObject.GetComponent<Animator>().SetBool("jump", false);
+        }
 
         // COLISION
         if (myRigidbody.transform.position.x < screenBounds.x )
@@ -102,7 +115,7 @@ public class playerController : MonoBehaviour
         {
             if (teCasc)
             {
-                teCasc = false;
+                activarCasc(false);
 
             }
             else if (!tePildora)
@@ -118,10 +131,12 @@ public class playerController : MonoBehaviour
         if (activar)
         {
             teCasc = true;
+            gameObject.GetComponent<Animator>().SetBool("helmet", true);
         }
         else
         {
             teCasc = false;
+            gameObject.GetComponent<Animator>().SetBool("helmet", false);
         }
     }
 
