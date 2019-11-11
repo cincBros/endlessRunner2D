@@ -41,7 +41,7 @@ public class spawnerH : MonoBehaviour
     private void spawnPowerUp()
     {
         int rand = Random.Range(0, powerUps.Length);
-        spawnable a = Instantiate(powerUps[rand]) as spawnable;
+        spawnable a = Instantiate(powerUps[0]) as spawnable;
         a.getStarted(0f);
     }
 
@@ -77,7 +77,7 @@ public class spawnerH : MonoBehaviour
             int rand = Random.Range(0, 100);
             //int rand = 0; //modoGus
 
-            if (80 <= ratioPowerUp)
+            if (rand <= ratioPowerUp)
             {
                 spawnPowerUp();
             }

@@ -28,9 +28,10 @@ public class playerController : MonoBehaviour
 
     
     private int jumps;
-    public bool grounded, hasJumped;
+    public bool grounded;
     public bool teCasc, teMolles, tePildora;
     public bool viu;
+    public bool tackling;
     public LayerMask whatIsGround;
 
     private Rigidbody2D myRigidbody;
@@ -43,10 +44,9 @@ public class playerController : MonoBehaviour
     void Start()
     {
         viu = true;
-        teMolles = teCasc = tePildora = false;
+        teMolles = teCasc = tePildora = tackling = false;
         mollesTime = pildoraTime = 0;
         jumps = 0;
-        hasJumped = false;
         myRigidbody = GetComponent<Rigidbody2D>();
         myCollider = GetComponent<Collider2D>();
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
@@ -55,31 +55,45 @@ public class playerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        grounded = Physics2D.IsTouchingLayers(myCollider, whatIsGround) && !hasJumped;
+
+        grounded = IsGrounded();
+        Debug.Log("Pildora " + tePildora);
 
         // MOVE
         if (Input.GetKeyDown("up"))
         {
-            hasJumped = true;
-            if (!teMolles && (grounded || jumps < 2))
+            if (tackling)
             {
-                myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce);
-                grounded = false;
+                tackling = false;
+                gameObject.GetComponent<Animator>().SetBool("tackle", false);
             }
-            else if (teMolles && grounded)
+            else
             {
-                myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce * 1.5f);
-                grounded = false;
+                if (!teMolles && (grounded || jumps < 1))
+                {
+                    myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce);
+                }
+                else if (teMolles && grounded)
+                {
+                    myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce * 1.5f);
+                }
+                jumps++;
+                gameObject.GetComponent<Animator>().SetBool("jump", true);
             }
-            jumps++;
-            gameObject.GetComponent<Animator>().SetBool("jump", true);
+            
+            
         }
-        else hasJumped = false;
+
         if (Input.GetKeyDown("down"))
         {
             if (!grounded)
             {
                 myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, -jumpForce);
+            }
+            else
+            {
+                tackling = true;
+                gameObject.GetComponent<Animator>().SetBool("tackle", true);
             }
         }
         if (Input.GetKey("left"))
@@ -109,11 +123,27 @@ public class playerController : MonoBehaviour
 
     }
 
+    public bool IsGrounded()
+    {
+        Vector2 position = transform.position;
+        Vector2 direction = Vector2.down;
+        float distance = 4f;
+        Debug.DrawRay(position, direction, Color.green);
+
+        RaycastHit2D hit = Physics2D.Raycast(position, direction, distance, whatIsGround);
+        if (hit.collider != null)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.transform.tag == "enemy")
         {
-            if (teCasc)
+            if (teCasc && !tePildora)
             {
                 activarCasc(false);
 
