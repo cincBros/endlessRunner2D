@@ -9,18 +9,60 @@ public class Slid : MonoBehaviour
     public Slider slider;
     public GameObject handler;
 
-    public void Activate(PUPickUp pu)
+    private PU pu;
+    private bool activated = false;
+
+    private void Update()
+    {
+        if (activated)
+        {
+            if (slider.value > 0.0f)
+            {
+                slider.value -= Time.deltaTime;
+            }
+            else
+            {
+                Remove();
+            }
+        }
+    }
+
+    public void Activate(PU newPU)
     {
         slider.gameObject.SetActive(true);
-        handler.GetComponent<Image>().sprite = pu.pu.icon;
+        pu = newPU;
+
+        activated = true;
+        handler.GetComponent<Image>().sprite = pu.icon;
+        slider.maxValue = pu.time;
+        slider.value = pu.time;
+        slider.minValue = 0.0f;
     }
+
     public void Remove()
     {
+        if (activated)
+        {
+            if (pu.name == "casc")
+            {
+                playerController.instance.activarCasc(false);
+            }
+            else if (pu.name == "molles")
+            {
+                playerController.instance.activarMolles(false);
+            }
+            else if (pu.name == "pildora")
+            {
+                playerController.instance.activarPildora(false);
+            }
+        }
         slider.gameObject.SetActive(false);
+        Slids.instance.Remove();
     }
 
     public bool isVisible()
     {
         return slider.gameObject.activeSelf;
     }
+
 }

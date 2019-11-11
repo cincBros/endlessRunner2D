@@ -23,8 +23,8 @@ public class Slids : MonoBehaviour
 
     #endregion
 
-    public PUPickUp pu;
-    Slid[] sliders = new Slid[8];
+    public PU pu;
+    Slid[] sliders = new Slid[3];
 
     private int nSliders = 0;
     private int maxSliders = 3;
@@ -40,13 +40,12 @@ public class Slids : MonoBehaviour
         nSliders = 0;
     }
 
-    public bool AddSlider(PUPickUp puAdd)
+    public bool AddSlider(PU puAdd)
     {
         pu = puAdd;
 
         if (nSliders >= maxSliders)
         {
-            Debug.Log("Not enough room.");
             return false;
         }
 
@@ -69,33 +68,12 @@ public class Slids : MonoBehaviour
         return true;
     }
 
-    public void Remove(PUPickUp puRemove)
+    public void Remove()
     {
-        int i = 1;
-        bool stop = false;
-
-        while (!stop && i < sliders.Length)
-        {
-            if (puRemove == pu)
-            {
-                sliders[i].Remove();
-                stop = true;
-            }
-            else
-            {
-                i++;
-            }
-        }
+        nSliders--;
     }
 
     private void Update()
     {
-        /*
-        for (int i = 0; i < maxSliders; i++)
-        {
-            if (sliders[i].isVisible())
-                sliders[i].transform.position += new Vector3(1, 0, 0);
-        }
-        */
     }
 }

@@ -22,16 +22,17 @@ public class Inventory : MonoBehaviour {
 	// ATRIBUTES
 	public int space = 2;
 	public int count = 0;
-	public PUPickUp[] pus;
+	public PU[] pus;
 
     public Transform slotsParent;
-    InventorySlot[] slots = new InventorySlot[8];
+    InventorySlot[] slots;
 
 
     // METHODS
     void Start() {
-        pus = new PUPickUp[space];
-		for (int i=0; i<space; i++) {
+        pus = new PU[space];
+        slots = new InventorySlot[space];
+        for (int i=0; i<space; i++) {
             pus[i] = null;
 		}
         count = 0;
@@ -42,29 +43,27 @@ public class Inventory : MonoBehaviour {
 
         if (Input.GetButtonDown("UsePU1"))
         {
-            Debug.Log("CanUse 1: " + canUse(pus[0].pu.name));
-            if (pus[0] != null && canUse(pus[0].pu.name))
+            if (pus[0] != null && canUse(pus[0].name))
             {
                 Remove(0);
             }
 		}
         else if (Input.GetButtonDown("UsePU2"))
         {
-            Debug.Log("CanUse 2: " + canUse(pus[1].pu.name));
-            if (pus[1] != null && canUse(pus[1].pu.name))
+            if (pus[1] != null && canUse(pus[1].name))
             {
                 Remove(1);
             }
 		}
 	}
 	
-	public bool Add(PUPickUp pu) {
-		if (count >= space) {
+	public bool Add(PU pu)
+    {
+        if (count >= space) {
 			return false;
-		}
-			
-		//sps.Add(sp);
-		bool stop = false;
+        }
+
+        bool stop = false;
 		int i = 0;
 		while (i < space && !stop) {
 			if (pus[i] == null)
@@ -77,7 +76,6 @@ public class Inventory : MonoBehaviour {
 				i++;
 			}
         }
-        Debug.Log("III: " + i);
         slots[i].AddPU(pus[i]);
 
         return true;
@@ -105,9 +103,8 @@ public class Inventory : MonoBehaviour {
 
     public void Remove(int i) {
 
-        Debug.Log("Using " + pus[i].name);
         if (pus[i] == null) { return; }
-		
+
         pus[i] = null;
 		count--;
 

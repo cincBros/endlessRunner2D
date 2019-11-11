@@ -75,9 +75,9 @@ public class spawnerH : MonoBehaviour
             yield return new WaitForSeconds(respawnTime);
 
             int rand = Random.Range(0, 100);
-            //int rand = 100; //modoGus
+            //int rand = 0; //modoGus
 
-            if (0 <= ratioPowerUp)
+            if (rand <= ratioPowerUp)
             {
                 spawnPowerUp();
             }

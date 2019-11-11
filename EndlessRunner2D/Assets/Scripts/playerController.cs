@@ -56,12 +56,15 @@ public class playerController : MonoBehaviour
         // MOVE
         if (Input.GetKeyDown("up"))
         {
-            if (grounded || jumps < 1)
+            if (!teMolles && (grounded || jumps < 1))
             {
-                if (!teMolles) myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce);
-                else myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce*1.5f);
-                jumps++;
+                myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce);
             }
+            else if (teMolles && grounded)
+            {
+                myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce * 1.5f);
+            }
+            jumps++;
         }
         if (Input.GetKeyDown("down"))
         {

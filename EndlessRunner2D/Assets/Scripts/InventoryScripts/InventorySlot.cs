@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class InventorySlot : MonoBehaviour {
 	
 	public Image icon;
-    public PUPickUp pu;
+    public PU pu;
 
     private float scaleIncrease = 0.2f;
     private float scaleIncrease2 = 0.02f;
@@ -22,9 +22,9 @@ public class InventorySlot : MonoBehaviour {
         icon.transform.localScale = new Vector3(0f, 0f, 0f);
     }
 
-    public void AddPU(PUPickUp newPU) {
+    public void AddPU(PU newPU) {
         pu = newPU;
-		icon.sprite = pu.pu.icon;
+		icon.sprite = pu.icon;
 		icon.enabled = true;
         icon.transform.localScale = new Vector3(0f, 0f, 0f);
         angle = 0f;
@@ -61,13 +61,11 @@ public class InventorySlot : MonoBehaviour {
                 y += scaleIncrease;
             }
 
-            //Debug.Log(x + " " + y + " " + scaleIncrease);
             icon.transform.localScale = new Vector3(x, y, z);
         }
     }
 
     public void ClearSlot() {
-        Debug.Log("clear: " + pu.pu.name);
         pu = null;
 		icon.sprite = null;
 		icon.enabled = false;

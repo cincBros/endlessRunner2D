@@ -8,4 +8,23 @@ public class PU : ScriptableObject {
     public float time = 0.0f;
 
 
+    public void Use()
+    {
+        if (name == "casc")
+        {
+            playerController.instance.activarCasc(true);
+        }
+        else if (name == "molles")
+        {
+            playerController.instance.activarMolles(true);
+            Slids.instance.AddSlider(this);
+        }
+        else if (name == "pildora")
+        {
+            playerController.instance.activarPildora(true);
+            Slids.instance.AddSlider(this);
+        }
+
+    }
+
 }
