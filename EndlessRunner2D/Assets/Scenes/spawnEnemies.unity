@@ -774,7 +774,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519469411}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.8, y: 43.8, z: 0}
+  m_LocalPosition: {x: -8.5, y: 43.8, z: 0}
   m_LocalScale: {x: 0.49999997, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -912,11 +912,13 @@ MonoBehaviour:
   jumpForce: 20
   mollesTime: 0
   pildoraTime: 0
+  tacklingTime: 0
   helmet: {fileID: 0}
   grounded: 0
   teCasc: 0
   teMolles: 0
   tePildora: 0
+  teRelan: 0
   viu: 0
   tackling: 0
   whatIsGround:
@@ -1546,6 +1548,7 @@ MonoBehaviour:
   - {fileID: 7064501296763814642, guid: 69b759e154556c248a31ff7177904608, type: 3}
   - {fileID: -3718293360170984947, guid: 4ca27ba9a0bb22d4d9b9bbb7e65bb9b6, type: 3}
   - {fileID: 2883793104830051561, guid: 7601f586da09f374d96275640a1f58e1, type: 3}
+  - {fileID: -3718293360170984947, guid: 63d2c9e8dc921a44da10927995ace107, type: 3}
   respawnTime: 2
   minRespawnTime: 0.5
   increment: 0.01

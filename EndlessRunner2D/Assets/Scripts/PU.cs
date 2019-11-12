@@ -24,6 +24,13 @@ public class PU : ScriptableObject {
             playerController.instance.activarPildora(true);
             Slids.instance.AddSlider(this);
         }
+        else if (name == "relantitzador")
+        {
+            playerController.instance.activarRelan(true);
+            spawnerH.instance.speed *= 0.5f;
+            spawnerH.instance.respawnTime *= 2.0f;
+            Slids.instance.AddSlider(this);
+        }
 
     }
 

@@ -56,6 +56,14 @@ public class Slid : MonoBehaviour
             {
                 playerController.instance.activarPildora(false);
             }
+            else if (pu.name == "relantitzador")
+            {
+                playerController.instance.activarRelan(false);
+                spawnerH.instance.speed *= 2.0f;
+                spawnerH.instance.respawnTime *= 0.5f;
+                
+            }
+            activated = false;
         }
         slider.gameObject.SetActive(false);
         Slids.instance.Remove();

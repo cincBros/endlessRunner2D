@@ -95,6 +95,10 @@ public class Inventory : MonoBehaviour {
         {
             return (!playerController.instance.tePildora);
         }
+        else if (name == "relantitzador")
+        {
+            return (!playerController.instance.teRelan);
+        }
         else
         {
             return true;

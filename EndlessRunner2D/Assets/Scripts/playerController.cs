@@ -23,13 +23,13 @@ public class playerController : MonoBehaviour
 
     public float speed;
     public float jumpForce;
-    public float mollesTime, pildoraTime;
+    public float mollesTime, pildoraTime, tacklingTime;
     public GameObject helmet;
 
     
     private int jumps;
     public bool grounded;
-    public bool teCasc, teMolles, tePildora;
+    public bool teCasc, teMolles, tePildora, teRelan;
     public bool viu;
     public bool tackling;
     public LayerMask whatIsGround;
@@ -44,7 +44,7 @@ public class playerController : MonoBehaviour
     void Start()
     {
         viu = true;
-        teMolles = teCasc = tePildora = tackling = false;
+        teMolles = teCasc = tePildora = teRelan = tackling = false;
         mollesTime = pildoraTime = 0;
         jumps = 0;
         myRigidbody = GetComponent<Rigidbody2D>();
@@ -57,15 +57,13 @@ public class playerController : MonoBehaviour
     {
 
         grounded = IsGrounded();
-        Debug.Log("Pildora " + tePildora);
 
         // MOVE
         if (Input.GetKeyDown("up"))
         {
             if (tackling)
             {
-                tackling = false;
-                gameObject.GetComponent<Animator>().SetBool("tackle", false);
+                tacklingTime = 0.0f;
             }
             else
             {
@@ -92,6 +90,7 @@ public class playerController : MonoBehaviour
             }
             else
             {
+                tacklingTime = 3.0f;
                 tackling = true;
                 gameObject.GetComponent<Animator>().SetBool("tackle", true);
             }
@@ -121,6 +120,15 @@ public class playerController : MonoBehaviour
             myRigidbody.velocity = new Vector2(0, myRigidbody.velocity.y);
         }
 
+        if (tacklingTime <= 0.0f)
+        {
+            tackling = false;
+            gameObject.GetComponent<Animator>().SetBool("tackle", false);
+        }
+        else
+        {
+            tacklingTime -= Time.deltaTime;
+        }
     }
 
     public bool IsGrounded()
@@ -191,6 +199,18 @@ public class playerController : MonoBehaviour
         else
         {
             tePildora = false;
+        }
+    }
+
+    public void activarRelan(bool activar)
+    {
+        if (activar)
+        {
+            teRelan = true;
+        }
+        else
+        {
+            teRelan = false;
         }
     }
 }

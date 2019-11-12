@@ -4,6 +4,23 @@ using UnityEngine;
 
 public class spawnerH : MonoBehaviour
 {
+    #region Singleton
+
+    public static spawnerH instance;
+
+    void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.LogWarning("More than one instance of SpawnerH found!");
+            return;
+        }
+
+        instance = this;
+    }
+
+    #endregion
+
     public spawnable[] obstacles = new spawnable[3];
     public spawnable[] powerUps = new spawnable[3];
     
@@ -74,6 +91,7 @@ public class spawnerH : MonoBehaviour
             }
             yield return new WaitForSeconds(respawnTime);
 
+            Debug.Log("spawneja");
             int rand = Random.Range(0, 100);
             //int rand = 0; //modoGus
 
