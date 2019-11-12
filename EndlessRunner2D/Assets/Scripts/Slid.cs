@@ -37,6 +37,7 @@ public class Slid : MonoBehaviour
         slider.maxValue = pu.time;
         slider.value = pu.time;
         slider.minValue = 0.0f;
+        
     }
 
     public void Remove()
@@ -64,5 +65,4 @@ public class Slid : MonoBehaviour
     {
         return slider.gameObject.activeSelf;
     }
-
 }

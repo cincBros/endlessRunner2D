@@ -41,7 +41,7 @@ public class spawnerH : MonoBehaviour
     private void spawnPowerUp()
     {
         int rand = Random.Range(0, powerUps.Length);
-        spawnable a = Instantiate(powerUps[0]) as spawnable;
+        spawnable a = Instantiate(powerUps[rand]) as spawnable;
         a.getStarted(0f);
     }
 
