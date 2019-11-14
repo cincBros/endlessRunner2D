@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class runner : spawnable
+public class runner : Obstacle
 {
     private void Awake()
     {

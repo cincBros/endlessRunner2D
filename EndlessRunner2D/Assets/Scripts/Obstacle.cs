@@ -2,17 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class spawnable : MonoBehaviour
+public class Obstacle : MonoBehaviour
 {
     public static float speed = 10.0f;
-    public new string name = "spawnable";
+    public new string name = "obstacle";
 
     protected float xPos = 20f;
     protected float yPos = 3f;
 
     private Vector2 screenBounds;
 
-    // Start is called before the first frame update
 
 
     void Start()

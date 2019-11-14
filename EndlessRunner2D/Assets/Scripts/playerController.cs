@@ -23,7 +23,7 @@ public class playerController : MonoBehaviour
 
     public float speed;
     public float jumpForce;
-    public float mollesTime, pildoraTime, tacklingTime;
+    public float mollesTime, pildoraTime, tacklingTime, groundedDetectionTime;
     public GameObject helmet;
 
     
@@ -37,6 +37,7 @@ public class playerController : MonoBehaviour
     private Rigidbody2D myRigidbody;
     private Collider2D myCollider;
     private Vector2 screenBounds;
+    private float playerWidth;
 
 
 
@@ -45,19 +46,17 @@ public class playerController : MonoBehaviour
     {
         viu = true;
         teMolles = teCasc = tePildora = teRelan = tackling = false;
-        mollesTime = pildoraTime = 0;
+        mollesTime = pildoraTime = tacklingTime = groundedDetectionTime = 0.0f;
         jumps = 0;
         myRigidbody = GetComponent<Rigidbody2D>();
         myCollider = GetComponent<Collider2D>();
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
+        playerWidth = transform.GetComponent<SpriteRenderer>().bounds.size.x / 2;
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        grounded = IsGrounded();
-
         // MOVE
         if (Input.GetKeyDown("up"))
         {
@@ -67,7 +66,7 @@ public class playerController : MonoBehaviour
             }
             else
             {
-                if (!teMolles && (grounded || jumps < 1))
+                if (!teMolles && (grounded || jumps < 2))
                 {
                     myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce);
                 }
@@ -76,6 +75,8 @@ public class playerController : MonoBehaviour
                     myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce * 1.5f);
                 }
                 jumps++;
+                groundedDetectionTime = 0.2f;
+                grounded = false;
                 gameObject.GetComponent<Animator>().SetBool("jump", true);
             }
             
@@ -97,28 +98,38 @@ public class playerController : MonoBehaviour
         }
         if (Input.GetKey("left"))
         {
-            myRigidbody.velocity = new Vector2(-speed, myRigidbody.velocity.y);
+            if (!tackling)
+            {
+                myRigidbody.velocity = new Vector2(-speed, myRigidbody.velocity.y);
+            }
 
         }
         if (Input.GetKey("right"))
         {
-            myRigidbody.velocity = new Vector2(speed, myRigidbody.velocity.y);
+            if (!tackling)
+            {
+                myRigidbody.velocity = new Vector2(speed, myRigidbody.velocity.y);
+            }
 
         }
 
         // GROUND
-        if (grounded)
+        if (groundedDetectionTime <= 0.0f)
         {
-            jumps = 0;
-            gameObject.GetComponent<Animator>().SetBool("jump", false);
+            grounded = IsGrounded();
+            if (grounded)
+            {
+                jumps = 0;
+                gameObject.GetComponent<Animator>().SetBool("jump", false);
+            }
+        }
+        else
+        {
+            groundedDetectionTime -= Time.deltaTime;
         }
 
         // COLISION
-        if (myRigidbody.transform.position.x < screenBounds.x )
-        {
-            myRigidbody.transform.Translate(new Vector2(0.1f, 0));
-            myRigidbody.velocity = new Vector2(0, myRigidbody.velocity.y);
-        }
+        DontGoOutsideRange(screenBounds.x + 2f, 10f);
 
         if (tacklingTime <= 0.0f)
         {
@@ -131,7 +142,14 @@ public class playerController : MonoBehaviour
         }
     }
 
-    public bool IsGrounded()
+    private void DontGoOutsideRange(float left, float right)
+    {
+        Vector3 viewPos = transform.position;
+        viewPos.x = Mathf.Clamp(viewPos.x, screenBounds.x + playerWidth, screenBounds.x * -1 - playerWidth);
+        transform.position = viewPos;
+    }
+
+    private bool IsGrounded()
     {
         Vector2 position = transform.position;
         Vector2 direction = Vector2.down;

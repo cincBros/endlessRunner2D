@@ -21,8 +21,8 @@ public class spawnerH : MonoBehaviour
 
     #endregion
 
-    public spawnable[] obstacles = new spawnable[3];
-    public spawnable[] powerUps = new spawnable[3];
+    public Obstacle[] obstacles = new Obstacle[3];
+    public PUPickUp[] powerUps = new PUPickUp[3];
     
     public float respawnTime;
     public float minRespawnTime;
@@ -58,7 +58,7 @@ public class spawnerH : MonoBehaviour
     private void spawnPowerUp()
     {
         int rand = Random.Range(0, powerUps.Length);
-        spawnable a = Instantiate(powerUps[rand]) as spawnable;
+        PUPickUp a = Instantiate(powerUps[rand]) as PUPickUp;
         a.getStarted(0f);
     }
 
@@ -66,7 +66,7 @@ public class spawnerH : MonoBehaviour
     {
         int idx = Random.Range(0, obstacles.Length);
         //int idx = 1; //conos
-        spawnable a = Instantiate(obstacles[idx]) as spawnable;
+        Obstacle a = Instantiate(obstacles[idx]) as Obstacle;
         a.getStarted(0f);
 
         if (a.name == "cone")
@@ -74,7 +74,7 @@ public class spawnerH : MonoBehaviour
             int rand = Random.Range(0, 3);
             for (int i=0; i<rand; i++)
             {
-                a = Instantiate(obstacles[idx]) as spawnable;
+                a = Instantiate(obstacles[idx]) as Obstacle;
                 a.getStarted(1f*i + 1f);
             }
         }
@@ -91,7 +91,6 @@ public class spawnerH : MonoBehaviour
             }
             yield return new WaitForSeconds(respawnTime);
 
-            Debug.Log("spawneja");
             int rand = Random.Range(0, 100);
             //int rand = 0; //modoGus
 

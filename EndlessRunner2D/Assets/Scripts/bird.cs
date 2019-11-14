@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class bird : spawnable
+public class bird : Obstacle
 {
     private void Awake()
     {

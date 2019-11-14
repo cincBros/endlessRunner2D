@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class cone : spawnable
+public class cone : Obstacle
 {
     public Sprite[] coneSprites = new Sprite[3];
     private SpriteRenderer spr;
