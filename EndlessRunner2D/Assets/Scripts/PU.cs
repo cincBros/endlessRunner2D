@@ -12,6 +12,7 @@ public class PU : ScriptableObject {
     {
         if (name == "casc")
         {
+            soundManager.PlaySound("getCasc");
             playerController.instance.activarCasc(true);
         }
         else if (name == "molles")
