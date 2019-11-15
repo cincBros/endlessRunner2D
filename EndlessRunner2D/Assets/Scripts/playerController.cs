@@ -52,6 +52,7 @@ public class playerController : MonoBehaviour
         myCollider = GetComponent<Collider2D>();
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         playerWidth = transform.GetComponent<SpriteRenderer>().bounds.size.x / 2;
+        soundManager.PlaySound("xiulet");
     }
 
     // Update is called once per frame
@@ -72,6 +73,7 @@ public class playerController : MonoBehaviour
                 }
                 else if (teMolles && grounded)
                 {
+                    soundManager.PlaySound("boing");
                     myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce * 1.5f);
                 }
                 jumps++;

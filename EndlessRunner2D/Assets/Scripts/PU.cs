@@ -21,6 +21,7 @@ public class PU : ScriptableObject {
         }
         else if (name == "pildora")
         {
+            soundManager.PlaySound("getPildora");
             playerController.instance.activarPildora(true);
             Slids.instance.AddSlider(this);
         }
