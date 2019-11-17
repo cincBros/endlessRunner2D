@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class rugbyBall : MonoBehaviour
+public class bottle : MonoBehaviour
 {
     public float speed = 10.0f;
     int rand;
 
-    //private Vector2 screenBounds;
+    private Vector2 screenBounds;
 
     // Start is called before the first frame update
     void Start()
     {
         //Assignar limites de la camara
-        //screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
+        screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
 
         rand = (Random.Range(-11, 11));
         this.transform.position = new Vector2(rand, 10);
