@@ -578,7 +578,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 200520696}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.8, y: 3.3, z: 0}
+  m_LocalPosition: {x: 9.89, y: 3.16, z: 0}
   m_LocalScale: {x: 1.5812, y: 1.502274, z: 1}
   m_Children: []
   m_Father: {fileID: 8272350}
@@ -1381,7 +1381,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: ecd685a2a895d2347a3e9d523dd96e4c, type: 3}
     m_FontSize: 24
     m_FontStyle: 0
     m_BestFit: 0
@@ -1685,7 +1685,8 @@ MonoBehaviour:
   obstacles:
   - {fileID: 1151288865764853245, guid: fd86df6841eb57949a9c72e81eba398e, type: 3}
   - {fileID: 744583660948626364, guid: ca1235f61966a224ba2031186697467e, type: 3}
-  points: 3
+  alert: {fileID: 8256131390437392458, guid: d11b713e1d3c5554c89cf8107407d68b, type: 3}
+  points: 20
 --- !u!4 &1348661734
 Transform:
   m_ObjectHideFlags: 0
@@ -1937,6 +1938,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 306f15ee66311a145a8ce6f5f7013b7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  angleScale: 0
+  angleRot: 0
   space: 2
   count: 0
   pus: []

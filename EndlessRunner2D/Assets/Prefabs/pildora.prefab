@@ -144,6 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: pildora
   pu: {fileID: 11400000, guid: 2670d04b13c404b44983c9de3700a7ed, type: 2}
+  puSprite: {fileID: 2947814470470126157}
   star: {fileID: 5802628885328174044}
 --- !u!1 &5802628885328174044
 GameObject:

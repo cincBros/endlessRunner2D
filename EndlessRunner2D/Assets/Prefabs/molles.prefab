@@ -224,4 +224,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: molles
   pu: {fileID: 11400000, guid: 10c9f3121d13dc34c930b66e277bbb5d, type: 2}
+  puSprite: {fileID: 288326336306285294}
   star: {fileID: 2783607877037713871}

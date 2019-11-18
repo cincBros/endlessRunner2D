@@ -224,4 +224,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: relantitzador
   pu: {fileID: 11400000, guid: a1a26ed09550d804d88d23b8f6abe1e4, type: 2}
+  puSprite: {fileID: 1755875291721018018}
   star: {fileID: 2832078276753518452}

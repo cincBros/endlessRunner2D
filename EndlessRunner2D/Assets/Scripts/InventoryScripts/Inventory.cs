@@ -8,6 +8,12 @@ public class Inventory : MonoBehaviour {
 	
 	public static Inventory instance;
 	
+    public float angleScale = 0f;				// Angle for the waving movement
+    private float angleScaleIncrease = 0.06f;	// Increase of the angle of the waving movement
+	
+	public float angleRot = 0f;			// Angle for the rotation movement
+	private float angleRotIncrease = 2f;	// Increase of the angle of the rotation movement
+	
 	void Awake() {
 		if (instance != null) {
 			Debug.LogWarning("More than one instance of Inventory found!");
@@ -43,18 +49,21 @@ public class Inventory : MonoBehaviour {
 
         if (Input.GetButtonDown("UsePU1"))
         {
-            if (pus[0] != null && canUse(pus[0].name))
+            if (pus[0] != null && playerController.instance.CanUsePU(pus[0]) && !Slids.instance.IsFull())
             {
                 Remove(0);
             }
 		}
         else if (Input.GetButtonDown("UsePU2"))
         {
-            if (pus[1] != null && canUse(pus[1].name))
+            if (pus[1] != null && playerController.instance.CanUsePU(pus[1]) && !Slids.instance.IsFull())
             {
                 Remove(1);
             }
 		}
+		
+		angleScale = angleScale%360 + angleScaleIncrease;
+		angleRot = angleRot%360 + angleRotIncrease;
 	}
 	
 	public bool Add(PU pu)
@@ -80,30 +89,6 @@ public class Inventory : MonoBehaviour {
 
         return true;
 	}
-
-    bool canUse(string name)
-    {
-        if (name == "casc")
-        {
-            return (!playerController.instance.teCasc);
-        }
-        else if (name == "molles")
-        {
-            return (!playerController.instance.teMolles);
-        }
-        else if (name == "pildora")
-        {
-            return (!playerController.instance.tePildora);
-        }
-        else if (name == "relantitzador")
-        {
-            return (!playerController.instance.teRelan);
-        }
-        else
-        {
-            return true;
-        }
-    }
 
     public void Remove(int i) {
 

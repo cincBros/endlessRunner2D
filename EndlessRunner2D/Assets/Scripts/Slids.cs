@@ -44,7 +44,7 @@ public class Slids : MonoBehaviour
     {
         pu = puAdd;
 
-        if (nSliders >= maxSliders)
+        if (IsFull())
         {
             return false;
         }
@@ -72,8 +72,9 @@ public class Slids : MonoBehaviour
     {
         nSliders--;
     }
-
-    private void Update()
-    {
-    }
+	
+	public bool IsFull()
+	{
+		return nSliders >= maxSliders;
+	}
 }

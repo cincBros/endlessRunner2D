@@ -172,9 +172,10 @@ public class playerController : MonoBehaviour
         if (collision.transform.tag == "enemy")
         {
             if (teCasc && !tePildora)
-            {
-                activarCasc(false);
-
+            {	
+				teCasc = false;
+                Debug.Log("tocat");
+				gameObject.GetComponent<Animator>().SetBool("helmet", false);
             }
             else if (!tePildora)
             {
@@ -183,54 +184,79 @@ public class playerController : MonoBehaviour
             }  
         }
     }
-
-    public void activarCasc(bool activar)
-    {
-        if (activar)
+	
+	public bool CanUsePU(PU pu)
+	{
+        if (pu.name == "casc")
+        {
+            return !teCasc;
+        }
+        else if (pu.name == "molles")
+        {
+            return !teMolles;
+        }
+        else if (pu.name == "pildora")
+        {
+            return !tePildora;
+        }
+        else if (pu.name == "relantitzador")
+        {
+            return !teRelan;
+        }
+        else
+        {
+            return true;
+        }
+    }
+	
+	public void ActivatePU(PU pu)
+	{
+        if (pu.name == "casc")
         {
             teCasc = true;
             gameObject.GetComponent<Animator>().SetBool("helmet", true);
+            soundManager.PlaySound("getCasc");
         }
-        else
-        {
-            teCasc = false;
-            gameObject.GetComponent<Animator>().SetBool("helmet", false);
-        }
-    }
-
-    public void activarMolles(bool activar)
-    {
-        if (activar)
+        else if (pu.name == "molles")
         {
             teMolles = true;
+            Slids.instance.AddSlider(pu);
         }
-        else
-        {
-            teMolles = false;
-        }
-    }
-
-    public void activarPildora(bool activar)
-    {
-        if (activar)
+        else if (pu.name == "pildora")
         {
             tePildora = true;
+            Slids.instance.AddSlider(pu);
+            soundManager.PlaySound("getPildora");
         }
-        else
-        {
-            tePildora = false;
-        }
-    }
-
-    public void activarRelan(bool activar)
-    {
-        if (activar)
+        else if (pu.name == "relantitzador")
         {
             teRelan = true;
+            spawnerH.instance.speed *= 0.5f;
+            spawnerH.instance.respawnTime *= 2.0f;
+            Slids.instance.AddSlider(pu);
         }
-        else
-        {
-            teRelan = false;
-        }
-    }
+	}
+	
+	public void DeactivatePU(PU pu)
+	{
+		if (pu.name == "casc")
+		{
+			teCasc = false;
+            gameObject.GetComponent<Animator>().SetBool("helmet", false);
+		}
+		else if (pu.name == "molles")
+		{
+			teMolles = false;
+		}
+		else if (pu.name == "pildora")
+		{
+			tePildora = false;
+		}
+		else if (pu.name == "relantitzador")
+		{
+			teRelan = false;
+			spawnerH.instance.speed *= 2.0f;
+			spawnerH.instance.respawnTime *= 0.5f;
+		}
+	}
 }

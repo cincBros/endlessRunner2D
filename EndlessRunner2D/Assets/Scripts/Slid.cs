@@ -44,25 +44,7 @@ public class Slid : MonoBehaviour
     {
         if (activated)
         {
-            if (pu.name == "casc")
-            {
-                playerController.instance.activarCasc(false);
-            }
-            else if (pu.name == "molles")
-            {
-                playerController.instance.activarMolles(false);
-            }
-            else if (pu.name == "pildora")
-            {
-                playerController.instance.activarPildora(false);
-            }
-            else if (pu.name == "relantitzador")
-            {
-                playerController.instance.activarRelan(false);
-                spawnerH.instance.speed *= 2.0f;
-                spawnerH.instance.respawnTime *= 0.5f;
-                
-            }
+			playerController.instance.DeactivatePU(pu);
             activated = false;
         }
         slider.gameObject.SetActive(false);

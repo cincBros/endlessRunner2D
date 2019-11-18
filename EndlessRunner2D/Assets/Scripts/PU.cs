@@ -10,30 +10,7 @@ public class PU : ScriptableObject {
 
     public void Use()
     {
-        if (name == "casc")
-        {
-            soundManager.PlaySound("getCasc");
-            playerController.instance.activarCasc(true);
-        }
-        else if (name == "molles")
-        {
-            playerController.instance.activarMolles(true);
-            Slids.instance.AddSlider(this);
-        }
-        else if (name == "pildora")
-        {
-            soundManager.PlaySound("getPildora");
-            playerController.instance.activarPildora(true);
-            Slids.instance.AddSlider(this);
-        }
-        else if (name == "relantitzador")
-        {
-            playerController.instance.activarRelan(true);
-            spawnerH.instance.speed *= 0.5f;
-            spawnerH.instance.respawnTime *= 2.0f;
-            Slids.instance.AddSlider(this);
-        }
-
+		playerController.instance.ActivatePU(this);
     }
 
 }
