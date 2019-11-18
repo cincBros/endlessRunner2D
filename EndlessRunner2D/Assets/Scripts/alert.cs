@@ -69,7 +69,6 @@ public class alert : MonoBehaviour
         while (alertTime <= 3)
         {
             alertTime+=0.5f;
-            Debug.Log(alertTime);
             yield return new WaitForSeconds(0.5f);
         }
     }

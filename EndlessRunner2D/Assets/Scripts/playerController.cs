@@ -24,8 +24,6 @@ public class playerController : MonoBehaviour
     public float speed;
     public float jumpForce;
     public float mollesTime, pildoraTime, tacklingTime, groundedDetectionTime;
-    public GameObject helmet;
-
     
     private int jumps;
     public bool grounded;
@@ -36,9 +34,14 @@ public class playerController : MonoBehaviour
 
     private Rigidbody2D myRigidbody;
     private Collider2D myCollider;
+
     private Vector2 screenBounds;
     private float playerWidth;
 
+    public GameObject helmet;
+    private Color helmetColor;
+
+    public HelmetDie helmetDie;
 
 
     // Start is called before the first frame update
@@ -53,16 +56,73 @@ public class playerController : MonoBehaviour
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         playerWidth = transform.GetComponent<SpriteRenderer>().bounds.size.x / 2;
         soundManager.PlaySound("xiulet");
+
+        helmetColor = helmet.GetComponent<SpriteRenderer>().color;
+        helmetColor.a = 0;
+        helmet.GetComponent<SpriteRenderer>().color = helmetColor;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // MOVE
+        if (viu)
+        {
+            UpdateAlive();
+        }
+        else
+        {
+            UpdateDead();
+        }
+    }
+
+    private void UpdateAlive()
+    {
+        CheckInput();
+
+        // GROUND
+        if (groundedDetectionTime <= 0.0f)
+        {
+            grounded = IsGrounded();
+            if (grounded)
+            {
+                jumps = 0;
+                gameObject.GetComponent<Animator>().SetBool("jump", false);
+                helmet.GetComponent<Animator>().SetBool("jump", false);
+            }
+        }
+        else
+        {
+            groundedDetectionTime -= Time.deltaTime;
+        }
+
+        // COLISION
+        DontGoOutsideRange(screenBounds.x + 2f, 10f);
+
+        if (tacklingTime <= 0.0f)
+        {
+            tackling = false;
+            gameObject.GetComponent<Animator>().SetBool("tackle", false);
+            helmet.GetComponent<Animator>().SetBool("tackle", false);
+        }
+        else
+        {
+            tacklingTime -= Time.deltaTime;
+        }
+    }
+
+    private void UpdateDead()
+    {
+
+    }
+
+
+    private void CheckInput()
+    {
         if (Input.GetKeyDown("up"))
         {
             if (tackling)
             {
+                tackling = false;
                 tacklingTime = 0.0f;
             }
             else
@@ -80,9 +140,8 @@ public class playerController : MonoBehaviour
                 groundedDetectionTime = 0.2f;
                 grounded = false;
                 gameObject.GetComponent<Animator>().SetBool("jump", true);
+                helmet.GetComponent<Animator>().SetBool("jump", true);
             }
-            
-            
         }
 
         if (Input.GetKeyDown("down"))
@@ -96,16 +155,18 @@ public class playerController : MonoBehaviour
                 tacklingTime = 3.0f;
                 tackling = true;
                 gameObject.GetComponent<Animator>().SetBool("tackle", true);
+                helmet.GetComponent<Animator>().SetBool("tackle", true);
             }
         }
+
         if (Input.GetKey("left"))
         {
             if (!tackling)
             {
                 myRigidbody.velocity = new Vector2(-speed, myRigidbody.velocity.y);
             }
-
         }
+
         if (Input.GetKey("right"))
         {
             if (!tackling)
@@ -114,35 +175,10 @@ public class playerController : MonoBehaviour
             }
 
         }
-
-        // GROUND
-        if (groundedDetectionTime <= 0.0f)
-        {
-            grounded = IsGrounded();
-            if (grounded)
-            {
-                jumps = 0;
-                gameObject.GetComponent<Animator>().SetBool("jump", false);
-            }
-        }
-        else
-        {
-            groundedDetectionTime -= Time.deltaTime;
-        }
-
-        // COLISION
-        DontGoOutsideRange(screenBounds.x + 2f, 10f);
-
-        if (tacklingTime <= 0.0f)
-        {
-            tackling = false;
-            gameObject.GetComponent<Animator>().SetBool("tackle", false);
-        }
-        else
-        {
-            tacklingTime -= Time.deltaTime;
-        }
     }
+
+
+
 
     private void DontGoOutsideRange(float left, float right)
     {
@@ -171,17 +207,17 @@ public class playerController : MonoBehaviour
     {
         if (collision.transform.tag == "enemy")
         {
-            if (teCasc && !tePildora)
-            {	
-				teCasc = false;
-                Debug.Log("tocat");
-				gameObject.GetComponent<Animator>().SetBool("helmet", false);
-            }
-            else if (!tePildora)
+            if (!tePildora)
             {
-                viu = false;
-                Destroy(gameObject);
-            }  
+                if (teCasc)
+                {
+                    ActivateCasc(false);
+                }
+                else
+                {
+                    Die();
+                }
+            }
         }
     }
 	
@@ -213,9 +249,8 @@ public class playerController : MonoBehaviour
 	{
         if (pu.name == "casc")
         {
-            teCasc = true;
-            gameObject.GetComponent<Animator>().SetBool("helmet", true);
-            soundManager.PlaySound("getCasc");
+            //gameObject.GetComponent<Animator>().SetBool("helmet", true);
+            ActivateCasc(true);
         }
         else if (pu.name == "molles")
         {
@@ -241,8 +276,7 @@ public class playerController : MonoBehaviour
 	{
 		if (pu.name == "casc")
 		{
-			teCasc = false;
-            gameObject.GetComponent<Animator>().SetBool("helmet", false);
+            ActivateCasc(false);
 		}
 		else if (pu.name == "molles")
 		{
@@ -259,4 +293,29 @@ public class playerController : MonoBehaviour
 			spawnerH.instance.respawnTime *= 0.5f;
 		}
 	}
+
+
+    private void ActivateCasc(bool activate)
+    {
+        teCasc = activate;
+        if (activate)
+        {
+            helmetColor.a = 255;
+            soundManager.PlaySound("getCasc");
+        }
+        else
+        {
+            helmetColor.a = 0;
+        }
+        helmet.GetComponent<SpriteRenderer>().color = helmetColor;
+    }
+
+
+
+    private void Die()
+    {
+        viu = false;
+        Instantiate(helmetDie);
+        Destroy(gameObject);
+    }
 }
