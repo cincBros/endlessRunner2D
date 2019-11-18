@@ -9,6 +9,7 @@ public class DayNightCicle : MonoBehaviour
     public GameObject moon;
     public GameObject sunset;
     public GameObject night;
+    public GameObject stars;
 
     public Vector2 centerPos = new Vector2(0, -37f);
     public float radius = 40f;
@@ -22,7 +23,9 @@ public class DayNightCicle : MonoBehaviour
     private Color sunsetColor;
     private float maxAlphaSunset = 0.3f;
     private Color nightColor;
+    private Color starsColor;
     private float maxAlphaNight = 0.75f;
+    private float maxAlphaStars = 0.75f;
 
     // Start is called before the first frame update
     void Start()
@@ -33,15 +36,19 @@ public class DayNightCicle : MonoBehaviour
 
         sunsetColor = sunset.GetComponent<SpriteRenderer>().color;
         nightColor = night.GetComponent<SpriteRenderer>().color;
+        starsColor = stars.GetComponent<SpriteRenderer>().color;
 
         detectChanges();
         if (isSunset)
             sunsetColor.a = maxAlphaSunset;
         if (isNight)
+        {
             nightColor.a = maxAlphaNight;
-
+            starsColor.a = maxAlphaStars;
+        }
         sunset.GetComponent<SpriteRenderer>().color = sunsetColor;
         night.GetComponent<SpriteRenderer>().color = nightColor;
+        stars.GetComponent<SpriteRenderer>().color = starsColor;
     }
 
     private void updatePositions()
@@ -83,7 +90,7 @@ public class DayNightCicle : MonoBehaviour
 
         if (isSunset)
         {
-            if (sunsetColor.a < 0.3f)
+            if (sunsetColor.a < maxAlphaSunset)
             {
                 sunsetColor.a = sunsetColor.a + 0.02f* absSpeed;
             }
@@ -100,9 +107,10 @@ public class DayNightCicle : MonoBehaviour
 
         if (isNight)
         {
-            if (nightColor.a < 0.75f)
+            if (nightColor.a < maxAlphaNight)
             {
                 nightColor.a = nightColor.a + 0.02f* absSpeed;
+                starsColor.a = starsColor.a + 0.02f * absSpeed;
             }
         }
         else
@@ -110,10 +118,13 @@ public class DayNightCicle : MonoBehaviour
             if (nightColor.a > 0f)
             {
                 nightColor.a = nightColor.a - 0.02f* absSpeed;
+                starsColor.a = starsColor.a - 0.02f * absSpeed;
             }
         }
 
         night.GetComponent<SpriteRenderer>().color = nightColor;
+        stars.GetComponent<SpriteRenderer>().color = starsColor;
+
 
         sun.transform.RotateAround(new Vector2(0, -10), Vector3.back, sunAngle * Mathf.Deg2Rad * Time.deltaTime);
         moon.transform.RotateAround(new Vector2(0, -10), Vector3.back, moonAngle * Mathf.Deg2Rad * Time.deltaTime);
