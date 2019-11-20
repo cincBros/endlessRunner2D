@@ -127,6 +127,7 @@ public class playerController : MonoBehaviour
             }
             else
             {
+                soundManager.PlaySound("jump");
                 if (!teMolles && (grounded || jumps < 2))
                 {
                     myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce);
@@ -209,6 +210,7 @@ public class playerController : MonoBehaviour
         {
             if (!tePildora)
             {
+                soundManager.PlaySound("hit");
                 if (teCasc)
                 {
                     ActivateCasc(false);
@@ -271,6 +273,7 @@ public class playerController : MonoBehaviour
             DayNightCicle.instance.sunAngleSpeed *= 0.5f;
             DayNightCicle.instance.moonAngleSpeed *= 0.5f;
             Slids.instance.AddSlider(pu);
+            soundManager.PlaySound("clock");
         }
 	}
 	

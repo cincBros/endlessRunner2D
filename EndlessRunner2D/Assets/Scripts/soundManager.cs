@@ -5,7 +5,7 @@ using UnityEngine;
 public class soundManager : MonoBehaviour
 {
 
-    public static AudioClip xiulet, boing, getPildora, getCasc, alarm;
+    public static AudioClip xiulet, boing, getPildora, getCasc, alarm, clock, jump, hit;
     static AudioSource audioSrc;
 
     // Start is called before the first frame update
@@ -17,6 +17,9 @@ public class soundManager : MonoBehaviour
         getPildora = Resources.Load<AudioClip>("getPildora");
         getCasc = Resources.Load<AudioClip>("getCasc");
         alarm = Resources.Load<AudioClip>("alarm");
+        clock = Resources.Load<AudioClip>("clock");
+        jump = Resources.Load<AudioClip>("jump");
+        hit = Resources.Load<AudioClip>("hit");
 
         audioSrc = GetComponent<AudioSource>();
     }
@@ -45,6 +48,15 @@ public class soundManager : MonoBehaviour
                 break;
             case "alarm":
                 audioSrc.PlayOneShot(alarm);
+                break;
+            case "clock":
+                audioSrc.PlayOneShot(clock);
+                break;
+            case "jump":
+                audioSrc.PlayOneShot(jump);
+                break;
+            case "hit":
+                audioSrc.PlayOneShot(hit);
                 break;
 
         }

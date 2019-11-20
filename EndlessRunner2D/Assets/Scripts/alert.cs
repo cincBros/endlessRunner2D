@@ -23,8 +23,10 @@ public class alert : MonoBehaviour
         x = 0.02f;
         y = 0.02f;
 
-        xInc = 0.0025f;
-        yInc = 0.0025f;
+        xInc = 0.0037f;
+        yInc = 0.0037f;
+
+        this.transform.localScale = new Vector3(x, y, z);
 
         alertTime = 0;
         StartCoroutine(addAlertTime());
