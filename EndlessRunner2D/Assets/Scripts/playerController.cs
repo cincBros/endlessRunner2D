@@ -268,6 +268,8 @@ public class playerController : MonoBehaviour
             teRelan = true;
             spawnerH.instance.speed *= 0.5f;
             spawnerH.instance.respawnTime *= 2.0f;
+            DayNightCicle.instance.sunAngleSpeed *= 0.5f;
+            DayNightCicle.instance.moonAngleSpeed *= 0.5f;
             Slids.instance.AddSlider(pu);
         }
 	}
@@ -291,7 +293,9 @@ public class playerController : MonoBehaviour
 			teRelan = false;
 			spawnerH.instance.speed *= 2.0f;
 			spawnerH.instance.respawnTime *= 0.5f;
-		}
+            DayNightCicle.instance.sunAngleSpeed *= 2.0f;
+            DayNightCicle.instance.moonAngleSpeed *= 2.0f;
+        }
 	}
 
 
@@ -315,7 +319,7 @@ public class playerController : MonoBehaviour
     private void Die()
     {
         viu = false;
-        Instantiate(helmetDie);
+        //Instantiate(helmetDie);
         Destroy(gameObject);
     }
 }

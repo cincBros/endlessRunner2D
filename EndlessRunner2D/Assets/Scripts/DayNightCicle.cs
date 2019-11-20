@@ -5,6 +5,24 @@ using UnityEngine;
 
 public class DayNightCicle : MonoBehaviour
 {
+    #region Singleton
+
+    public static DayNightCicle instance;
+
+    void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.LogWarning("More than one instance of DayNightCicle found!");
+            return;
+        }
+
+        instance = this;
+    }
+
+    #endregion
+    
+    
     public GameObject sun;
     public GameObject moon;
     public GameObject sunset;
@@ -25,7 +43,7 @@ public class DayNightCicle : MonoBehaviour
     private Color nightColor;
     private Color starsColor;
     private float maxAlphaNight = 0.75f;
-    private float maxAlphaStars = 0.75f;
+    private float maxAlphaStars = 1.00f;
 
     // Start is called before the first frame update
     void Start()
@@ -110,7 +128,6 @@ public class DayNightCicle : MonoBehaviour
             if (nightColor.a < maxAlphaNight)
             {
                 nightColor.a = nightColor.a + 0.02f* absSpeed;
-                starsColor.a = starsColor.a + 0.02f * absSpeed;
             }
         }
         else
@@ -118,7 +135,21 @@ public class DayNightCicle : MonoBehaviour
             if (nightColor.a > 0f)
             {
                 nightColor.a = nightColor.a - 0.02f* absSpeed;
-                starsColor.a = starsColor.a - 0.02f * absSpeed;
+            }
+        }
+
+        if (isNight && !isSunset)
+        {
+            if (starsColor.a < maxAlphaStars)
+            { 
+                starsColor.a = starsColor.a + 0.04f * absSpeed;
+            }
+        }
+        else
+        {
+            if (starsColor.a > 0f)
+            {
+                starsColor.a = starsColor.a - 0.04f * absSpeed;
             }
         }
 
