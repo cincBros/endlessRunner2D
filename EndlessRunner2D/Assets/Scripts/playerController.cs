@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class playerController : MonoBehaviour
 {
@@ -324,5 +325,15 @@ public class playerController : MonoBehaviour
         viu = false;
         //Instantiate(helmetDie);
         Destroy(gameObject);
+
+        //WaitForSeconds(3);
+        ChangeScene();
+
     }
+
+    private void ChangeScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1);
+    }
+
 }
