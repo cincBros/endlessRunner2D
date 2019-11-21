@@ -13,6 +13,7 @@ public class InventorySlot : MonoBehaviour {
     private Vector3 normalSize = new Vector3(1f, 1f, 1f);
 
     public void AddPU(PU newPU) {
+        soundManager.PlaySound("addPU");
         pu = newPU;
 		icon.sprite = pu.icon;
 		icon.enabled = true;
