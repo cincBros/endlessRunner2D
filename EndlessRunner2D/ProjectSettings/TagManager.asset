@@ -9,6 +9,7 @@ TagManager:
   - powerUp
   - player
   - enemy
+  - Reset
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - 
   - Ground
   - 
-  - 
+  - Reset
   - 
   - 
   - 
