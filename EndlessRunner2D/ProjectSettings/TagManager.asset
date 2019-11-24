@@ -56,11 +56,11 @@ TagManager:
   - name: moveBackground
     uniqueID: 910554519
     locked: 0
-  - name: objects
-    uniqueID: 2907672945
-    locked: 0
   - name: ground
     uniqueID: 1272878071
+    locked: 0
+  - name: objects
+    uniqueID: 2907672945
     locked: 0
   - name: Default
     uniqueID: 0
