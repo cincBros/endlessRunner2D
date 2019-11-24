@@ -6,10 +6,26 @@ public class BackgroundElement : MonoBehaviour
 {
 
     [SerializeField]
-    private float speed;
+    public float speed;
 
     [SerializeField]
     private Transform neighbour;
+
+    private bool speedChanged = false;
+
+    private void Update()
+    {
+        if (playerController.instance.teRelan && !speedChanged)
+        {
+            speedChanged = true;
+            speed *= 0.5f;
+        }
+        if (!playerController.instance.teRelan && speedChanged)
+        {
+            speedChanged = false;
+            speed *= 2.0f;
+        }
+    }
 
     public void Move()
     {

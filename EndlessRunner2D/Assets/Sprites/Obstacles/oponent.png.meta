@@ -1,31 +1,31 @@
 fileFormatVersion: 2
-guid: 214d7a3e0e2d3b34eac779f7270dfdc6
+guid: c4acc325ec5531641be093109b83c1d7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4595864486523017749
-    second: Helmet - RunSpriteSheet_0
+      213: -5818084677202410958
+    second: oponent_0
   - first:
-      213: 6886321297196506204
-    second: Helmet - RunSpriteSheet_1
+      213: 759177319038467333
+    second: oponent_1
   - first:
-      213: -4253188600329091296
-    second: Helmet - RunSpriteSheet_2
+      213: -6736510665018157108
+    second: oponent_2
   - first:
-      213: 5693277140999427632
-    second: Helmet - RunSpriteSheet_3
+      213: -1757726318348379815
+    second: oponent_3
   - first:
-      213: 5333332667059338619
-    second: Helmet - RunSpriteSheet_4
+      213: 9186440157938375590
+    second: oponent_4
   - first:
-      213: 4478563870922768382
-    second: Helmet - RunSpriteSheet_5
+      213: 8800683772809476785
+    second: oponent_5
   - first:
-      213: 8855636612069743953
-    second: Helmet - RunSpriteSheet_6
+      213: 3338864931169806486
+    second: oponent_6
   - first:
-      213: 6925096482306856529
-    second: Helmet - RunSpriteSheet_7
+      213: -801264953111007288
+    second: oponent_7
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Helmet - RunSpriteSheet_0
+      name: oponent_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cb0804771ccdc5e42aaaeaa50697ccf8
-      internalID: 4595864486523017749
+      spriteID: 8271307d1cabf504c80faa97bf47ae4b
+      internalID: -5818084677202410958
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Helmet - RunSpriteSheet_1
+      name: oponent_1
       rect:
         serializedVersion: 2
         x: 1000
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8449b3a1b61c50449ac18f7a56c6caa7
-      internalID: 6886321297196506204
+      spriteID: 8f8f1f488bc15ce47990adc62f632ec1
+      internalID: 759177319038467333
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Helmet - RunSpriteSheet_2
+      name: oponent_2
       rect:
         serializedVersion: 2
         x: 2000
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 47674ecf8e48bb045971aafb422b4b6c
-      internalID: -4253188600329091296
+      spriteID: 8858ef74620a92245835d5b3ec8ef5b9
+      internalID: -6736510665018157108
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Helmet - RunSpriteSheet_3
+      name: oponent_3
       rect:
         serializedVersion: 2
         x: 3000
@@ -187,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 64435e66198da9448a586fefee123156
-      internalID: 5693277140999427632
+      spriteID: 2fed3d13cbfbdc14996212aa28733671
+      internalID: -1757726318348379815
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Helmet - RunSpriteSheet_4
+      name: oponent_4
       rect:
         serializedVersion: 2
         x: 4000
@@ -208,14 +208,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 96079473ce9060146b19876b0cdb1f14
-      internalID: 5333332667059338619
+      spriteID: 09bf4cb5496a66242855d3fcea10b816
+      internalID: 9186440157938375590
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Helmet - RunSpriteSheet_5
+      name: oponent_5
       rect:
         serializedVersion: 2
         x: 5000
@@ -229,14 +229,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7c1b608c3be6dd84888b3425e1efe8ee
-      internalID: 4478563870922768382
+      spriteID: df34b39c3dfedbe41b3e7f1b00074537
+      internalID: 8800683772809476785
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Helmet - RunSpriteSheet_6
+      name: oponent_6
       rect:
         serializedVersion: 2
         x: 6000
@@ -250,14 +250,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 665ec845844b87f4b891495006cc86ab
-      internalID: 8855636612069743953
+      spriteID: e193b87fbb7b6364292698edcba464eb
+      internalID: 3338864931169806486
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Helmet - RunSpriteSheet_7
+      name: oponent_7
       rect:
         serializedVersion: 2
         x: 7000
@@ -271,8 +271,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3acfe78b567aa5146a2eaddc67ee11fb
-      internalID: 6925096482306856529
+      spriteID: ca43c072b53423a4da3fdc829cdf7da2
+      internalID: -801264953111007288
       vertices: []
       indices: 
       edges: []

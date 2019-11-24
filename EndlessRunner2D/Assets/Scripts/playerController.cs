@@ -128,13 +128,15 @@ public class playerController : MonoBehaviour
             }
             else
             {
-                soundManager.PlaySound("jump");
+                
                 if (!teMolles && (grounded || jumps < 2))
                 {
+                    soundManager.PlaySound("jump");
                     myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce);
                 }
                 else if (teMolles && grounded)
                 {
+                    soundManager.PlaySound("jump");
                     soundManager.PlaySound("boing");
                     myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce * 1.5f);
                 }
@@ -323,7 +325,7 @@ public class playerController : MonoBehaviour
     private void Die()
     {
         viu = false;
-        //Instantiate(helmetDie);
+        endSounds.PlaySound("xiuletFinal");
         Destroy(gameObject);
 
         //WaitForSeconds(3);

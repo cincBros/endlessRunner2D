@@ -230,7 +230,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -148}
+  m_AnchoredPosition: {x: 9, y: -162}
   m_SizeDelta: {x: 194, y: 236.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &429815663
@@ -691,18 +691,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: ecd685a2a895d2347a3e9d523dd96e4c, type: 3}
-    m_FontSize: 170
+    m_FontSize: 190
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 170
+    m_MaxSize: 190
     m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: GAME TITTLE
+  m_Text: roughby
 --- !u!222 &951563594
 CanvasRenderer:
   m_ObjectHideFlags: 0

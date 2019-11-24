@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class soundManager : MonoBehaviour
 {
-   
 
-    public static AudioClip xiulet, boing, getPildora, getCasc, alarm, clock, jump, hit, addPU, xiuletFinal;
+
+    public static AudioClip xiulet, boing, getPildora, getCasc, alarm, clock, jump, hit, addPU;
     public static AudioSource audioSrc;
 
     // Start is called before the first frame update
@@ -22,7 +22,6 @@ public class soundManager : MonoBehaviour
         jump = Resources.Load<AudioClip>("jump");
         hit = Resources.Load<AudioClip>("hit");
         addPU = Resources.Load<AudioClip>("addPU");
-        xiuletFinal = Resources.Load<AudioClip>("xiuletFinal");
 
         audioSrc = GetComponent<AudioSource>();
         DontDestroyOnLoad(audioSrc);
@@ -31,7 +30,10 @@ public class soundManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (!playerController.instance.viu)
+        {
+            audioSrc.Stop();
+        }
     }
 
     public static void PlaySound (string clip)
@@ -65,10 +67,6 @@ public class soundManager : MonoBehaviour
             case "addPU":
                 audioSrc.PlayOneShot(addPU);
                 break;
-            case "xiuletFinal":
-                audioSrc.PlayOneShot(xiuletFinal);
-                break;
-
         }
     }
 }
