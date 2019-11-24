@@ -94,7 +94,7 @@ public class spawnerH : MonoBehaviour
             int rand = Random.Range(0, 100);
             //int rand = 0; //modoGus
 
-            if (rand <= ratioPowerUp)
+            if (0 <= ratioPowerUp)
             {
                 spawnPowerUp();
             }
