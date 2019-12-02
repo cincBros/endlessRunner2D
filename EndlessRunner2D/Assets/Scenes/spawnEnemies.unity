@@ -177,8 +177,8 @@ MonoBehaviour:
   radius: 60
   sunAngle: 0
   moonAngle: 90
-  sunAngleSpeed: -0.5
-  moonAngleSpeed: -0.5
+  sunAngleSpeed: -0.03
+  moonAngleSpeed: -0.03
 --- !u!1 &105538271
 GameObject:
   m_ObjectHideFlags: 0

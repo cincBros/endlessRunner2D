@@ -8,9 +8,11 @@ public class Slid : MonoBehaviour
 
     public Slider slider;
     public GameObject handler;
+    public Image fill;
 
     private PU pu;
     private bool activated = false;
+    private Color slidColor;
 
     private void Update()
     {
@@ -19,6 +21,13 @@ public class Slid : MonoBehaviour
             if (slider.value > 0.0f)
             {
                 slider.value -= Time.deltaTime;
+                if (slider.value < slider.maxValue * 0.25f)
+                {
+                    slidColor.r = 255;
+                    slidColor.b = 0;
+                    slidColor.g = 0;
+                    fill.color = slidColor;
+                }
             }
             else
             {
@@ -29,6 +38,12 @@ public class Slid : MonoBehaviour
 
     public void Activate(PU newPU)
     {
+        slidColor.r = 148;
+        slidColor.b = 246;
+        slidColor.g = 255;
+        slidColor.a = 196;
+        fill.color = slidColor;
+
         slider.gameObject.SetActive(true);
         pu = newPU;
 

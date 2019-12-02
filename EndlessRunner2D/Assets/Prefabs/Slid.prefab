@@ -124,6 +124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 2382875244883028600}
   handler: {fileID: 558976200394848597}
+  fill: {fileID: 746441033218881263}
 --- !u!1 &558976200394848597
 GameObject:
   m_ObjectHideFlags: 0
