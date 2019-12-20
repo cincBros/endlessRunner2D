@@ -47,14 +47,14 @@ public class Inventory : MonoBehaviour {
 	
 	void Update() {
 
-        if (Input.GetButtonDown("UsePU1"))
+        if (Input.GetButtonDown("UsePU1") || Input.GetButton("UsePU1J"))
         {
             if (pus[0] != null && playerController.instance.CanUsePU(pus[0]) && !Slids.instance.IsFull())
             {
                 Remove(0);
             }
 		}
-        else if (Input.GetButtonDown("UsePU2"))
+        else if (Input.GetButtonDown("UsePU2") || Input.GetButton("UsePU2J"))
         {
             if (pus[1] != null && playerController.instance.CanUsePU(pus[1]) && !Slids.instance.IsFull())
             {

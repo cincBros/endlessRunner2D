@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class playerController : MonoBehaviour
 {
@@ -27,7 +28,7 @@ public class playerController : MonoBehaviour
     public float mollesTime, pildoraTime, tacklingTime, groundedDetectionTime;
     
     private int jumps;
-    public bool grounded;
+    public bool grounded, jumping;
     public bool teCasc, teMolles, tePildora, teRelan;
     public bool viu;
     public bool tackling;
@@ -119,36 +120,42 @@ public class playerController : MonoBehaviour
 
     private void CheckInput()
     {
-        if (Input.GetKeyDown("up"))
+        if (CrossPlatformInputManager.GetButton("Jump") || Input.GetKeyDown("up"))
         {
-            if (tackling)
+            if (!jumping)
             {
-                tackling = false;
-                tacklingTime = 0.0f;
-            }
-            else
-            {
-                
-                if (!teMolles && (grounded || jumps < 2))
-                {
-                    soundManager.PlaySound("jump");
-                    myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce);
-                }
-                else if (teMolles && grounded)
-                {
-                    soundManager.PlaySound("jump");
-                    soundManager.PlaySound("boing");
-                    myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce * 1.5f);
-                }
-                jumps++;
-                groundedDetectionTime = 0.2f;
-                grounded = false;
-                gameObject.GetComponent<Animator>().SetBool("jump", true);
-                helmet.GetComponent<Animator>().SetBool("jump", true);
-            }
-        }
+                jumping = true;
 
-        if (Input.GetKeyDown("down"))
+                if (tackling)
+                {
+                    tackling = false;
+                    tacklingTime = 0.0f;
+                }
+                else
+                {
+                    if (!teMolles && (grounded || jumps < 2))
+                    {
+                        soundManager.PlaySound("jump");
+                        myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce);
+                    }
+                    else if (teMolles && grounded)
+                    {
+                        soundManager.PlaySound("jump");
+                        soundManager.PlaySound("boing");
+                        myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce * 1.5f);
+                    }
+                    jumps++;
+                    groundedDetectionTime = 0.2f;
+                    grounded = false;
+                    gameObject.GetComponent<Animator>().SetBool("jump", true);
+                    helmet.GetComponent<Animator>().SetBool("jump", true);
+                    
+                }
+            }   
+        }
+        else jumping = false;
+
+        if (Input.GetKeyDown("down") || Input.GetButton("Tackle"))
         {
             if (!grounded)
             {
@@ -163,6 +170,7 @@ public class playerController : MonoBehaviour
             }
         }
 
+       
         if (Input.GetKey("left"))
         {
             if (!tackling)
@@ -170,6 +178,7 @@ public class playerController : MonoBehaviour
                 myRigidbody.velocity = new Vector2(-speed, myRigidbody.velocity.y);
             }
         }
+        else if (!Input.GetKey("right") && !tackling) myRigidbody.velocity = new Vector2(speed * Input.GetAxis("Run"), myRigidbody.velocity.y);
 
         if (Input.GetKey("right"))
         {
@@ -179,6 +188,11 @@ public class playerController : MonoBehaviour
             }
 
         }
+        else if (!Input.GetKey("left") && !tackling) myRigidbody.velocity = new Vector2(speed * Input.GetAxis("Run"), myRigidbody.velocity.y);
+
+
+
+
     }
 
 
