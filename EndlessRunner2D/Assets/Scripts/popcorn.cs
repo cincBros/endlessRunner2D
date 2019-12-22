@@ -25,7 +25,7 @@ public class popcorn : MonoBehaviour
         if (this.transform.position.y < -6.5f) Destroy(gameObject);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.tag == "player" && (playerController.instance.teCasc || playerController.instance.tePildora))
         {

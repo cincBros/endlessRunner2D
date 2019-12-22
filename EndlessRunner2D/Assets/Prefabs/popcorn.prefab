@@ -92,7 +92,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -121,4 +121,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  alert: {fileID: 8256131390437392458, guid: d11b713e1d3c5554c89cf8107407d68b, type: 3}
+  z: 0
+  zIncrement: 5
+  spr: {fileID: 0}

@@ -221,8 +221,9 @@ public class playerController : MonoBehaviour
         return false;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
+		Debug.Log("Player: entra " + collision.transform.tag);
         if (collision.transform.tag == "enemy")
         {
             if (!tePildora)
@@ -336,7 +337,7 @@ public class playerController : MonoBehaviour
 
 
 
-    private void Die()
+    public void Die()
     {
         viu = false;
         endSounds.PlaySound("xiuletFinal");

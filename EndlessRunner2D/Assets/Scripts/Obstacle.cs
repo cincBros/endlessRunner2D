@@ -42,11 +42,17 @@ public class Obstacle : MonoBehaviour
 
     public virtual void InitializeTimer() { }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (transform.tag == "enemy" && collision.transform.tag == "player" && (playerController.instance.teCasc || playerController.instance.tePildora))
+		Debug.Log("Obstacle: entra " + collision.transform.tag);
+        if (transform.tag == "enemy" && collision.transform.tag == "player")
         {
-            Destroy(gameObject);
+			if (playerController.instance.teCasc || playerController.instance.tePildora) {
+				Destroy(gameObject);
+			}
+			else {
+				//collision.transform.Die();
+			}
         }
 
 
