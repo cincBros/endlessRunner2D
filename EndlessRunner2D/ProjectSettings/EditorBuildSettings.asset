@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/spawnEnemies.unity
+    path: Assets/Scenes/Game.unity
     guid: 07a8f3579b470ca40a431e23f1087195
   - enabled: 1
     path: Assets/Scenes/GameOver.unity

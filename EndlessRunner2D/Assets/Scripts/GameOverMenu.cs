@@ -10,13 +10,12 @@ public class GameOverMenu : MonoBehaviour
 
     public void PlayAgain()
     {
-        Debug.Log(SceneManager.GetActiveScene().buildIndex);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        SceneManager.LoadScene("Game");
     }
 
     // Update is called once per frame
     public void BacktoMenu()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
+        SceneManager.LoadScene("Menu");
     }
 }
