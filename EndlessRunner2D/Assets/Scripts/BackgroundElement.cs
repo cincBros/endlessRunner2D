@@ -7,6 +7,7 @@ public class BackgroundElement : MonoBehaviour
 
     [SerializeField]
     public float speed;
+    public float speedAct;
 
     [SerializeField]
     private Transform neighbour;
@@ -29,7 +30,13 @@ public class BackgroundElement : MonoBehaviour
 
     public void Move()
     {
-        transform.Translate(Vector2.left * speed * Time.smoothDeltaTime);
+        speedAct = spawnerH.instance.speed;
+        if(this.tag == "Grades")
+        {
+            speedAct = speedAct / 3;
+        }
+        transform.Translate(-speedAct * Time.deltaTime, 0, 0);
+
     }
 
     public void SnapToNeighbour()

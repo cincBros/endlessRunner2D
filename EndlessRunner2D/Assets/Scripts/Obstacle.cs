@@ -4,15 +4,32 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
+
+    #region Singleton
+
+    public static Obstacle instance;
+
+    void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.LogWarning("More than one instance of Obstacle found!");
+            return;
+        }
+
+        instance = this;
+    }
+
+    #endregion
+
     public static float speed = 10.0f;
+    public float speedAct;
     public new string name = "obstacle";
 
     protected float xPos = 20f;
     protected float yPos = 3f;
 
     private Vector2 screenBounds;
-
-
 
     void Start()
     {
@@ -30,7 +47,8 @@ public class Obstacle : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
-        transform.Translate(-speed * Time.deltaTime, 0, 0);
+        speedAct = speed * Time.deltaTime;
+        transform.Translate(-speedAct, 0, 0);
         //Detectar cuando esta fuera de camara para borrar
         if (gameObject.transform.position.x < screenBounds.x * 3)
         {

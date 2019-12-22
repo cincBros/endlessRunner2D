@@ -1216,7 +1216,7 @@ GameObject:
   - component: {fileID: 560452590}
   m_Layer: 0
   m_Name: 'Stands '
-  m_TagString: Untagged
+  m_TagString: Grades
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1319,6 +1319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  speedAct: 0
   neighbour: {fileID: 692954441}
 --- !u!1 &627596001
 GameObject:
@@ -2363,7 +2364,7 @@ GameObject:
   - component: {fileID: 1423703481}
   m_Layer: 0
   m_Name: Stands
-  m_TagString: Untagged
+  m_TagString: Grades
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2466,6 +2467,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  speedAct: 0
   neighbour: {fileID: 1715057634}
 --- !u!1 &1516541843
 GameObject:
@@ -2594,6 +2596,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  speedAct: 0
   neighbour: {fileID: 1656276357}
 --- !u!212 &1577191902
 SpriteRenderer:
@@ -2694,7 +2697,7 @@ GameObject:
   - component: {fileID: 1617673940}
   m_Layer: 0
   m_Name: Gespa
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2727,6 +2730,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  speedAct: 0
   neighbour: {fileID: 2040309903}
 --- !u!212 &1617673939
 SpriteRenderer:

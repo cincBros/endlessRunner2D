@@ -16,12 +16,10 @@ public class BackgroundManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (true) 
-        { 
-            foreach (BackgroundElement element in backgroundElements)
-            {
-                element.Move();
-            }
+        foreach (BackgroundElement element in backgroundElements)
+        {
+            element.Move();
         }
+     
     }
 }

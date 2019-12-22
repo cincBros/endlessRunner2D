@@ -10,6 +10,7 @@ TagManager:
   - player
   - enemy
   - Reset
+  - Grades
   layers:
   - Default
   - TransparentFX
