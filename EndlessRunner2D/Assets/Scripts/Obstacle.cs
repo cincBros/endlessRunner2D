@@ -62,7 +62,7 @@ public class Obstacle : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-		Debug.Log("Obstacle: entra " + collision.transform.tag);
+		//Debug.Log("Obstacle: entra " + collision.transform.tag);
         if (transform.tag == "enemy" && collision.transform.tag == "player")
         {
 			if (playerController.instance.teCasc || playerController.instance.tePildora) {

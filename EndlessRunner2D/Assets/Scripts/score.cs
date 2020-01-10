@@ -7,7 +7,7 @@ public class score : MonoBehaviour
 {
     Text scoreText;
     
-    public static double scoreValue;
+    public static int scoreValue;
     public float respawnTime = 0.5f;
 
     // Start is called before the first frame update
@@ -16,11 +16,6 @@ public class score : MonoBehaviour
         scoreValue = 0;
         scoreText = GetComponent<Text>();
         StartCoroutine(addScore());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
         scoreText.text = "Score: " + scoreValue;
     }
 
@@ -29,6 +24,7 @@ public class score : MonoBehaviour
         while (playerController.instance.viu)
         {
             scoreValue++;
+			scoreText.text = "Score: " + scoreValue;
             yield return new WaitForSeconds(respawnTime);
         }
     }

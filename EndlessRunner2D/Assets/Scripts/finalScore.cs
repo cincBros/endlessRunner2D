@@ -16,13 +16,8 @@ public class finalScore : MonoBehaviour
         soundManager.PlaySound("xiuletFinal");
         result = score.scoreValue;
         scoreText = GetComponent<Text>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (result > highscore)
-        {
+		
+        if (result > highscore) {
             highscore = result;
         }
         

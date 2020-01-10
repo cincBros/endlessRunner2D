@@ -223,7 +223,7 @@ public class playerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-		Debug.Log("Player: entra " + collision.transform.tag);
+		//Debug.Log("Player: entra " + collision.transform.tag);
         if (collision.transform.tag == "enemy")
         {
             if (!tePildora)
