@@ -33,9 +33,4 @@ public class GameOverMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Menu");
     }
-	
-	public void SubmitScore()
-    {
-        Highscores.AddNewHighscore("lmao", score.scoreValue);
-    }
 }

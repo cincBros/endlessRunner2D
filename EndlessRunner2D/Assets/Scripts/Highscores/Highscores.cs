@@ -61,8 +61,8 @@ public class Highscores : MonoBehaviour {
 	}
 	
 	public static int Highest() {
-		int score = highscoresList[0].score;
-		return score;
+		if (highscoresList.Length == 0) return 0;
+		return highscoresList[0].score;
 	}
 }
 

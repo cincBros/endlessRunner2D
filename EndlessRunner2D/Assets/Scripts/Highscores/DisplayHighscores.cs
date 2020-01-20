@@ -24,6 +24,9 @@ public class DisplayHighscores : MonoBehaviour
 			if (highscoreList.Length > i) {
 				highscoreText[i].text += highscoreList[i].username + "    " + highscoreList[i].score;
 			}
+			else {
+				highscoreText[i].text += "---" + "    " + "---";
+			}
 		}
 	}
 	
