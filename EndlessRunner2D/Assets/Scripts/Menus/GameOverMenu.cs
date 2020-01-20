@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameOverMenu : MonoBehaviour
 {
     public Text scoreText;
+    public GameObject recordText;
 
     public static double result;
     public static double highscore;
@@ -18,8 +19,8 @@ public class GameOverMenu : MonoBehaviour
 		highscore = Highscores.Highest();
         
         scoreText.text = "Score: " + result;
-		if (result > highscore)
-			scoreText.text += "  (Record)";
+		if (result > highscore) recordText.SetActive(true);
+		else recordText.SetActive(false);
 		scoreText.text += "\nHighscore: " + highscore;
     }
 
