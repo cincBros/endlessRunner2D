@@ -23,7 +23,7 @@ public class spawnerH : MonoBehaviour
 
     public Obstacle[] obstacles = new Obstacle[3];
     public PUPickUp[] powerUps = new PUPickUp[3];
-    
+
     public float respawnTime;
     public float minRespawnTime;
     public float increment;
@@ -93,7 +93,7 @@ public class spawnerH : MonoBehaviour
 
             int rand = Random.Range(0, 100);
             //int rand = 0; //modoGus
-
+            //spawnerScore.instance.SpawnExtrapoints(68);
             if (rand <= ratioPowerUp)
             {
                 spawnPowerUp();

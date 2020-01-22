@@ -8,6 +8,7 @@ public class bird : Obstacle
     {
         name = "bird";
         yPos = Random.Range(-1, 5);
+        value = 5;
+        deathSound = "birdHit";
     }
-
 }

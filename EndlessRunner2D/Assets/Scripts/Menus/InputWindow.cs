@@ -8,18 +8,18 @@ using TMPro;
 public class InputWindow : MonoBehaviour
 {
 	TMP_InputField inputField;
-	//public Button submitButton;
+	public Button submitButton;
 	
 	void Awake() {
 		inputField = transform.Find("InputField").GetComponent<TMP_InputField>();
 		inputField.text = "";
-		gameObject.SetActive(false);
-		//submitButton.interactable = true;
+		//gameObject.SetActive(false);
+		submitButton.interactable = true;
 	}
 	
 	public void Show() {
 		gameObject.SetActive(true);
-	}
+    }
 	
 	public void Hide() {
 		gameObject.SetActive(false);
@@ -31,7 +31,7 @@ public class InputWindow : MonoBehaviour
 		if (!String.IsNullOrWhiteSpace(nick)) {
 			Highscores.AddNewHighscore(nick, score.scoreValue);
 			inputField.text = "";
-			//submitButton.interactable = false;
+			submitButton.interactable = false;
 			Hide();
 		}
     }

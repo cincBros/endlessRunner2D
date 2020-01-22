@@ -49,6 +49,7 @@ public class Slids : MonoBehaviour
             return false;
         }
 
+
         bool stop = false;
         int i = 0;
         while (i < maxSliders && !stop)
@@ -59,13 +60,18 @@ public class Slids : MonoBehaviour
                 nSliders++;
                 stop = true;
             }
+            else if (sliders[i].isForPU(pu))
+            {
+                sliders[i].Activate(pu);
+                stop = true;
+            }
             else
             {
                 i++;
             }
         }
 
-        return true;
+        return stop;
     }
 
     public void Remove()

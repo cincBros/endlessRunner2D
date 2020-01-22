@@ -25,6 +25,8 @@ public class Obstacle : MonoBehaviour
     public static float speed = 10.0f;
     public float speedAct;
     public new string name = "obstacle";
+    public int value = 0;
+    public string deathSound;
 
     protected float xPos = 20f;
     protected float yPos = 3f;
@@ -66,7 +68,13 @@ public class Obstacle : MonoBehaviour
         if (transform.tag == "enemy" && collision.transform.tag == "player")
         {
 			if (playerController.instance.teCasc || playerController.instance.tePildora) {
-				Destroy(gameObject);
+                score.scoreValue += value;
+                score.actualitzarScore();
+
+                extraPoints.instance.startAgain(value);
+                soundManager.PlaySound(deathSound);
+                Destroy(gameObject);
+                
 			}
 			else {
 				//collision.transform.Die();

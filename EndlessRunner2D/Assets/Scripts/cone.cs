@@ -11,6 +11,8 @@ public class cone : Obstacle
     {
         name = "cone";
         yPos = 4.7f;
+        value = 2;
+        deathSound = "coneHit";
     }
 
     public override void InitializeSprite()

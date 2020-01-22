@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityStandardAssets.CrossPlatformInput;
-
 public class playerController : MonoBehaviour
 {
     #region Singleton
@@ -25,7 +23,7 @@ public class playerController : MonoBehaviour
 
     public float speed;
     public float jumpForce;
-    public float mollesTime, pildoraTime, tacklingTime, groundedDetectionTime;
+    public float mollesTime, pildoraTime, groundedDetectionTime;
     
     private int jumps;
     public bool grounded, jumping;
@@ -51,13 +49,14 @@ public class playerController : MonoBehaviour
     {
         viu = true;
         teMolles = teCasc = tePildora = teRelan = tackling = false;
-        mollesTime = pildoraTime = tacklingTime = groundedDetectionTime = 0.0f;
+        mollesTime = pildoraTime = groundedDetectionTime = 0.0f;
         jumps = 0;
         myRigidbody = GetComponent<Rigidbody2D>();
         myCollider = GetComponent<Collider2D>();
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         playerWidth = transform.GetComponent<SpriteRenderer>().bounds.size.x / 2;
         soundManager.PlaySound("xiulet");
+        //soundManager.PlaySound("musica");
 
         helmetColor = helmet.GetComponent<SpriteRenderer>().color;
         helmetColor.a = 0;
@@ -100,15 +99,10 @@ public class playerController : MonoBehaviour
         // COLISION
         DontGoOutsideRange(screenBounds.x + 2f, 10f);
 
-        if (tacklingTime <= 0.0f)
+        if (!tackling)
         {
-            tackling = false;
             gameObject.GetComponent<Animator>().SetBool("tackle", false);
             helmet.GetComponent<Animator>().SetBool("tackle", false);
-        }
-        else
-        {
-            tacklingTime -= Time.deltaTime;
         }
     }
 
@@ -120,7 +114,7 @@ public class playerController : MonoBehaviour
 
     private void CheckInput()
     {
-        if (CrossPlatformInputManager.GetButton("Jump") || Input.GetKeyDown("up"))
+        if (Input.GetButton("Jump"))
         {
             if (!jumping)
             {
@@ -129,7 +123,6 @@ public class playerController : MonoBehaviour
                 if (tackling)
                 {
                     tackling = false;
-                    tacklingTime = 0.0f;
                 }
                 else
                 {
@@ -155,32 +148,40 @@ public class playerController : MonoBehaviour
         }
         else jumping = false;
 
-        if (Input.GetKeyDown("down") || Input.GetButton("Tackle"))
+        if (Input.GetButton("Tackle"))
         {
+            
             if (!grounded)
             {
                 myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, -jumpForce);
             }
             else
             {
-                tacklingTime = 3.0f;
                 tackling = true;
                 gameObject.GetComponent<Animator>().SetBool("tackle", true);
                 helmet.GetComponent<Animator>().SetBool("tackle", true);
             }
         }
+        else
+        {
+            tackling = false;
+           
+        }
+
+ 
+
 
        
-        if (Input.GetKey("left"))
+        if (Input.GetButton("Left"))
         {
             if (!tackling)
             {
                 myRigidbody.velocity = new Vector2(-speed, myRigidbody.velocity.y);
             }
         }
-        else if (!Input.GetKey("right") && !tackling) myRigidbody.velocity = new Vector2(speed * Input.GetAxis("Run"), myRigidbody.velocity.y);
+        else if (!Input.GetButton("Right") && !tackling) myRigidbody.velocity = new Vector2(speed * Input.GetAxis("Run"), myRigidbody.velocity.y);
 
-        if (Input.GetKey("right"))
+        if (Input.GetButton("Right"))
         {
             if (!tackling)
             {
@@ -188,7 +189,7 @@ public class playerController : MonoBehaviour
             }
 
         }
-        else if (!Input.GetKey("left") && !tackling) myRigidbody.velocity = new Vector2(speed * Input.GetAxis("Run"), myRigidbody.velocity.y);
+        else if (!Input.GetButton("Left") && !tackling) myRigidbody.velocity = new Vector2(speed * Input.GetAxis("Run"), myRigidbody.velocity.y);
 
 
 
@@ -249,15 +250,15 @@ public class playerController : MonoBehaviour
         }
         else if (pu.name == "molles")
         {
-            return !teMolles;
+            return true;
         }
         else if (pu.name == "pildora")
         {
-            return !tePildora;
+            return true;
         }
         else if (pu.name == "relantitzador")
         {
-            return !teRelan;
+            return true;
         }
         else
         {

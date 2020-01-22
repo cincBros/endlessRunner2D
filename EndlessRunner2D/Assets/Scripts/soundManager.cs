@@ -6,7 +6,7 @@ public class soundManager : MonoBehaviour
 {
 
 
-    public static AudioClip xiulet, boing, getPildora, getCasc, alarm, clock, jump, hit, addPU;
+    public static AudioClip xiulet, boing, getPildora, getCasc, alarm, clock, jump, hit, addPU, enemyHit, birdHit, coneHit;
     public static AudioSource audioSrc;
 
     // Start is called before the first frame update
@@ -22,6 +22,9 @@ public class soundManager : MonoBehaviour
         jump = Resources.Load<AudioClip>("jump");
         hit = Resources.Load<AudioClip>("hit");
         addPU = Resources.Load<AudioClip>("addPU");
+        enemyHit = Resources.Load<AudioClip>("enemyHit");
+        birdHit = Resources.Load<AudioClip>("birdHit");
+        coneHit = Resources.Load<AudioClip>("coneHit");
 
         audioSrc = GetComponent<AudioSource>();
         DontDestroyOnLoad(audioSrc);
@@ -34,6 +37,7 @@ public class soundManager : MonoBehaviour
         {
             audioSrc.Stop();
         }
+        
     }
 
     public static void PlaySound (string clip)
@@ -66,6 +70,15 @@ public class soundManager : MonoBehaviour
                 break;
             case "addPU":
                 audioSrc.PlayOneShot(addPU);
+                break;
+            case "enemyHit":
+                audioSrc.PlayOneShot(enemyHit);
+                break;
+            case "birdHit":
+                audioSrc.PlayOneShot(birdHit);
+                break;
+            case "coneHit":
+                audioSrc.PlayOneShot(coneHit);
                 break;
         }
     }

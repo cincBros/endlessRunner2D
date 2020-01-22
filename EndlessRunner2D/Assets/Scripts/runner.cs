@@ -8,5 +8,7 @@ public class runner : Obstacle
     {
         name = "runner";
         yPos = 3.3f;
+        value = 10;
+        deathSound = "enemyHit";
     }
 }

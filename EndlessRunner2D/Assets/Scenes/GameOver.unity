@@ -440,9 +440,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 920438512}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 920438514}
+        m_MethodName: Show
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1081,6 +1081,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8952da7cf3c99144aba7f16b040ee10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  submitButton: {fileID: 304124259}
 --- !u!1 &978921459
 GameObject:
   m_ObjectHideFlags: 0

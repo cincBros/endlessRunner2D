@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class score : MonoBehaviour
 {
-    Text scoreText;
+    public static Text scoreText;
     
     public static int scoreValue;
     public float respawnTime = 0.5f;
@@ -27,5 +27,10 @@ public class score : MonoBehaviour
 			scoreText.text = "Score: " + scoreValue;
             yield return new WaitForSeconds(respawnTime);
         }
+    }
+
+    public static void actualitzarScore()
+    {
+        scoreText.text = "Score: " + scoreValue;
     }
 }

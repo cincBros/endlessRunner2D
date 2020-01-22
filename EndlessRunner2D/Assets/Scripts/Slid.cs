@@ -70,4 +70,9 @@ public class Slid : MonoBehaviour
     {
         return slider.gameObject.activeSelf;
     }
+
+    public bool isForPU(PU _pu)
+    {
+        return _pu.name == pu.name;
+    }
 }
