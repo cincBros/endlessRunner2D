@@ -100,5 +100,6 @@ public class Inventory : MonoBehaviour {
         slots[i].UsePU();
         slots[i].ClearSlot();
     }
+
 	
 }

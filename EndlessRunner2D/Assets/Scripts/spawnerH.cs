@@ -35,11 +35,12 @@ public class spawnerH : MonoBehaviour
     public int ratioPowerUp = 25;
 
     bool isIncremented;
+    public bool spawning;
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(spawnLoop());
+        if (spawning) startSpawning();
     }
 
     private void Update()
@@ -79,6 +80,16 @@ public class spawnerH : MonoBehaviour
             }
         }
 
+    }
+
+    public void setMaxRatio()
+    {
+        ratioPowerUp = 100;
+    }
+
+    public void startSpawning()
+    {
+        StartCoroutine(spawnLoop());
     }
 
     IEnumerator spawnLoop()

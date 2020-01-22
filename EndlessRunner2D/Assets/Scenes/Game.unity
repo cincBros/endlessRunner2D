@@ -1187,7 +1187,6 @@ MonoBehaviour:
   jumpForce: 20
   mollesTime: 0
   pildoraTime: 0
-  tacklingTime: 0
   groundedDetectionTime: 0
   grounded: 0
   jumping: 0
@@ -2254,6 +2253,7 @@ MonoBehaviour:
   - {fileID: 744583660948626364, guid: ca1235f61966a224ba2031186697467e, type: 3}
   alert: {fileID: 8256131390437392458, guid: d11b713e1d3c5554c89cf8107407d68b, type: 3}
   points: 20
+  tutorial: 0
 --- !u!4 &1348661734
 Transform:
   m_ObjectHideFlags: 0
@@ -2314,6 +2314,7 @@ MonoBehaviour:
   maxSpeed: 20
   points: 25
   ratioPowerUp: 20
+  spawning: 1
 --- !u!82 &1348661737
 AudioSource:
   m_ObjectHideFlags: 0
