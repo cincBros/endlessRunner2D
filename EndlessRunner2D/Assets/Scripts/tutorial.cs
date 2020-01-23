@@ -16,7 +16,7 @@ public class tutorial : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        steps = 4;
+        steps = 0;
         timer = 0;
         stepdone = false;
         moure.enabled = saltar.enabled = tackle.enabled = pu.enabled = play.enabled = false;
@@ -187,6 +187,11 @@ public class tutorial : MonoBehaviour
             play.enabled = false; 
             SceneManager.LoadScene("Game");
         }
+    }
+
+    public void Skip()
+    {
+        SceneManager.LoadScene("Game");
     }
 
 

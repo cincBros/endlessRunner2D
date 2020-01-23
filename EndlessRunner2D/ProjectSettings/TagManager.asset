@@ -11,6 +11,7 @@ TagManager:
   - enemy
   - Reset
   - Grades
+  - MenuMusic
   layers:
   - Default
   - TransparentFX
