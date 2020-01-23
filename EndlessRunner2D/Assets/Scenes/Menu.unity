@@ -1047,7 +1047,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -69.6, y: -76.2}
+  m_AnchoredPosition: {x: -58.8, y: -76.2}
   m_SizeDelta: {x: 361.75, y: 156.82}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &498468164
@@ -1516,7 +1516,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: ecd685a2a895d2347a3e9d523dd96e4c, type: 3}
     m_FontSize: 25
     m_FontStyle: 0
-    m_BestFit: 1
+    m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 190
     m_Alignment: 0
@@ -1625,7 +1625,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: ecd685a2a895d2347a3e9d523dd96e4c, type: 3}
     m_FontSize: 25
     m_FontStyle: 0
-    m_BestFit: 1
+    m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 190
     m_Alignment: 0
@@ -2587,7 +2587,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 92.63, y: -122.34}
+  m_AnchoredPosition: {x: 105.029976, y: -122.34}
   m_SizeDelta: {x: 156.72, y: 59.89}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1047802700
@@ -2736,7 +2736,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 94.4, y: -43.11}
+  m_AnchoredPosition: {x: 106.8, y: -43.11}
   m_SizeDelta: {x: 162.98, y: 55.36}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1072937803
@@ -3946,7 +3946,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: ecd685a2a895d2347a3e9d523dd96e4c, type: 3}
     m_FontSize: 25
     m_FontStyle: 0
-    m_BestFit: 1
+    m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 190
     m_Alignment: 0
@@ -4864,7 +4864,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 93.9, y: -83.8}
+  m_AnchoredPosition: {x: 106.29998, y: -83.8}
   m_SizeDelta: {x: 158.09, y: 61.26}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &2042719020
@@ -5411,7 +5411,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9245283, g: 0.9027234, b: 0.33579564, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -5420,7 +5420,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: ecd685a2a895d2347a3e9d523dd96e4c, type: 3}
     m_FontSize: 31
     m_FontStyle: 0
-    m_BestFit: 1
+    m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 190
     m_Alignment: 0

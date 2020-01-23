@@ -16,7 +16,7 @@ public class tutorial : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        steps = 0;
+        steps = 4;
         timer = 0;
         stepdone = false;
         moure.enabled = saltar.enabled = tackle.enabled = pu.enabled = play.enabled = false;
@@ -32,12 +32,14 @@ public class tutorial : MonoBehaviour
         switch(steps){
             case 0: showMovement(); break;
             case 1: showJumping(); break;
-            case 2: showFallFaster(); break;
-            case 3: showTackle(); break;
+            case 2: showTackle(); break;
+            case 3: showFallFaster(); break;
             case 4: showPowerUpsInfo(); break;
             case 5: showPowerUps(); break;
             case 6: showObjectsV(); break;
-            case 7: startPlaying(); break;
+            case 7: showObjectsH(); break;
+            case 8: showPoints(); break;
+            case 9: startPlaying(); break;
         }
     }
 
@@ -70,18 +72,6 @@ public class tutorial : MonoBehaviour
         }
     }
 
-    void showFallFaster()
-    {
-        tackle.enabled = true;
-        _text.text = "Once you have jumped, you can fall faster pressing the O button, down arrow key or S key";
-        if (timer >= 5)
-        {
-            tackle.enabled = false;
-            timer = 0;
-            steps++;
-        }
-    }
-
     void showTackle()
     {
         tackle.enabled = true;
@@ -97,12 +87,23 @@ public class tutorial : MonoBehaviour
         }
     }
 
+    void showFallFaster()
+    {
+        tackle.enabled = true;
+        _text.text = "Once you have jumped, you can fall faster pressing the O button, down arrow key or S key";
+        if (timer >= 5)
+        {
+            tackle.enabled = false;
+            timer = 0;
+            steps++;
+        }
+    }
+
 
     void showPowerUpsInfo()
     {
         if (!stepdone)
         {
-            Debug.Log("spawned");
             spawnerH.instance.setMaxRatio();
             spawnerH.instance.startSpawning();
             stepdone = true;
@@ -110,7 +111,7 @@ public class tutorial : MonoBehaviour
         
         //Inventory.instance.ActivarInventori();
         _text.text = "There are some Power Ups you can pick up, which are stored in your inventory";
-        if (timer >= 5)
+        if (timer >= 6)
         {
             timer = 0;
             stepdone = false;
@@ -122,7 +123,7 @@ public class tutorial : MonoBehaviour
     {
         _text.text = "You can use the first one with L2 button or 1 key, and the second one with R2 button or 2 key";
         pu.enabled = true;
-        if (timer >= 5)
+        if (timer >= 6)
         {
             pu.enabled = false;
             timer = 0;
@@ -135,11 +136,42 @@ public class tutorial : MonoBehaviour
         _text.text = "Be careful with some object that fall from the sky";
         if (!stepdone)
         {
-            Debug.Log("spawned");
             spawnerV.instance.spawn();
             stepdone = true;
         }
         if (timer >= 5)
+        {
+            stepdone = false;
+            timer = 0;
+            steps++;
+        }
+    }
+
+    void showObjectsH()
+    {
+        _text.text = "Be careful aswell with the obstacles. You have to avoid them";
+        if (!stepdone)
+        {
+            spawnerH.instance.setMinRatio();
+            stepdone = true;
+        }
+        if (timer >= 5)
+        {
+            stepdone = false;
+            timer = 0;
+            steps++;
+        }
+    }
+
+    void showPoints()
+    {
+        _text.text = "The further you go, the more points you will earn. You can earn points destroying obstacles";
+        if (!stepdone)
+        {
+            score.startCounting();
+            stepdone = true;
+        }
+        if (timer >= 7)
         {
             timer = 0;
             steps++;

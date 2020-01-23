@@ -87,6 +87,16 @@ public class spawnerH : MonoBehaviour
         ratioPowerUp = 100;
     }
 
+    public void setNormalRatio()
+    {
+        ratioPowerUp = 25;
+    }
+
+    public void setMinRatio()
+    {
+        ratioPowerUp = 0;
+    }
+
     public void startSpawning()
     {
         StartCoroutine(spawnLoop());
@@ -103,8 +113,7 @@ public class spawnerH : MonoBehaviour
             yield return new WaitForSeconds(respawnTime);
 
             int rand = Random.Range(0, 100);
-            //int rand = 0; //modoGus
-            //spawnerScore.instance.SpawnExtrapoints(68);
+            //extraPoints.instance.startAgain(68);
             if (rand <= ratioPowerUp)
             {
                 spawnPowerUp();

@@ -8,7 +8,7 @@ public class Highscores : MonoBehaviour {
 	const string publicCode = "5e18735ffe224b0478ccf83a";
 	const string webURL = "http://dreamlo.com/lb/";
 
-	public static Highscore[] highscoresList;
+	public static Highscore[] highscoresList = new Highscore[0];
 	static Highscores instance;
 	DisplayHighscores highscoresDisplay; 
 

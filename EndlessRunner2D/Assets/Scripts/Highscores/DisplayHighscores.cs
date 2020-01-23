@@ -10,7 +10,7 @@ public class DisplayHighscores : MonoBehaviour
     void Start()
     {
         for (int i=0; i< highscoreText.Length; i++) {
-			highscoreText[i].text = i+1 + ".      Fetching... ";
+			highscoreText[i].text = i+1 + ".      LOADING... ";
 		}
 		
 		highscoreManager = GetComponent<Highscores>();

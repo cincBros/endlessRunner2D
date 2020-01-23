@@ -19,7 +19,7 @@ public class InventorySlot : MonoBehaviour {
 		icon.enabled = true;
 		
 		scaleIncrease = 0.2f;
-        icon.transform.localScale = new Vector3(0f, 0f, 0f);
+        icon.transform.localScale = new Vector3(0f, 0f, 0.01f);
         waving = false;
 		
 		icon.transform.eulerAngles = new Vector3(0f, 0f, Mathf.Cos(Inventory.instance.angleRot * Mathf.Deg2Rad) * 15f);
@@ -68,7 +68,7 @@ public class InventorySlot : MonoBehaviour {
         pu = null;
 		icon.sprite = null;
 		icon.enabled = false;
-	}
+    }
 
     public void UsePU()
     {

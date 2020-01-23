@@ -42,6 +42,7 @@ public class playerController : MonoBehaviour
     private Color helmetColor;
 
     public HelmetDie helmetDie;
+    public bool tutorial;
 
 
     // Start is called before the first frame update
@@ -286,13 +287,16 @@ public class playerController : MonoBehaviour
         }
         else if (pu.name == "relantitzador")
         {
-            teRelan = true;
-            spawnerH.instance.speed *= 0.5f;
-            spawnerH.instance.respawnTime *= 2.0f;
-            DayNightCicle.instance.sunAngleSpeed *= 0.5f;
-            DayNightCicle.instance.moonAngleSpeed *= 0.5f;
+            if (!teRelan)
+            {
+                teRelan = true;
+                spawnerH.instance.speed *= 0.5f;
+                spawnerH.instance.respawnTime *= 2.0f;
+                DayNightCicle.instance.sunAngleSpeed *= 0.5f;
+                DayNightCicle.instance.moonAngleSpeed *= 0.5f;
+                soundManager.PlaySound("clock");
+            }
             Slids.instance.AddSlider(pu);
-            soundManager.PlaySound("clock");
         }
 	}
 	
@@ -340,18 +344,21 @@ public class playerController : MonoBehaviour
 
     public void Die()
     {
-        viu = false;
-        endSounds.PlaySound("xiuletFinal");
-        Destroy(gameObject);
+        if (!tutorial)
+        {
+            viu = false;
+            endSounds.PlaySound("xiuletFinal");
+            Destroy(gameObject);
 
-        //WaitForSeconds(3);
-        ChangeScene();
+            //WaitForSeconds(3);
+            ChangeScene();
+        }
 
     }
 
     private void ChangeScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1);
+        SceneManager.LoadScene("GameOver");
     }
 
 }

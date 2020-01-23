@@ -49,20 +49,28 @@ public class Slids : MonoBehaviour
             return false;
         }
 
-
         bool stop = false;
         int i = 0;
+        while (i < maxSliders && !stop)
+        {
+            if (sliders[i].isForPU(pu))
+            {
+                sliders[i].Activate(pu);
+                stop = true;
+            }
+            else
+            {
+                i++;
+            }
+        }
+
+        i = 0;
         while (i < maxSliders && !stop)
         {
             if (!sliders[i].isVisible())
             {
                 sliders[i].Activate(pu);
                 nSliders++;
-                stop = true;
-            }
-            else if (sliders[i].isForPU(pu))
-            {
-                sliders[i].Activate(pu);
                 stop = true;
             }
             else

@@ -28,7 +28,7 @@ public class extraPoints : MonoBehaviour
     Text _text;
 
     private float speedFactor = 0f;
-    private float speedFactor2 = 1f;
+    private float speedFactor2 = 0.7f;
     private float speedAct = 0f;
     private Vector3 initialPos;
 
@@ -48,10 +48,9 @@ public class extraPoints : MonoBehaviour
             speedAct += speedFactor * Time.deltaTime;
             speedFactor += speedFactor2;
             transform.Translate(-speedAct, 0.0f, 0.0f);
-        }
 
-        /*Color c = new Color(_text.color.r, _text.color.g, _text.color.b, _text.color.a - 100f * Time.deltaTime);
-        _text.color = c;*/
+            _text.color = new Color(_text.color.r, _text.color.g, _text.color.b, _text.color.a - 2f * Time.deltaTime);
+        }
 
         if (transform.position.x <= 0)
         {
@@ -66,6 +65,7 @@ public class extraPoints : MonoBehaviour
         speedFactor2 = 1f;
         speedAct = 0f;
         setText(t);
+        _text.color = new Color(_text.color.r, _text.color.g, _text.color.b, 1f);
 
         gameObject.SetActive(true);
     }

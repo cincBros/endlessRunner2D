@@ -14,11 +14,6 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("Tutorial");
     }
 
-    public void Settings()
-	{
-		SceneManager.LoadScene("SettingsMenu");
-	}
-
 	public void QuitGame()
 	{
 		Debug.Log("EXIT");

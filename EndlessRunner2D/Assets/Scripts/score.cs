@@ -10,21 +10,28 @@ public class score : MonoBehaviour
     public static int scoreValue;
     public float respawnTime = 0.5f;
 
+    public bool tutorial;
+    private static bool counting;
+
     // Start is called before the first frame update
     void Start()
     {
         scoreValue = 0;
         scoreText = GetComponent<Text>();
+        scoreText.text = "";
+        counting = !tutorial;
         StartCoroutine(addScore());
-        scoreText.text = "Score: " + scoreValue;
     }
 
     IEnumerator addScore()
     {
         while (playerController.instance.viu)
         {
-            scoreValue++;
-			scoreText.text = "Score: " + scoreValue;
+            if (counting)
+            {
+                scoreText.text = "Score: " + scoreValue;
+                scoreValue++;
+            }
             yield return new WaitForSeconds(respawnTime);
         }
     }
@@ -32,5 +39,10 @@ public class score : MonoBehaviour
     public static void actualitzarScore()
     {
         scoreText.text = "Score: " + scoreValue;
+    }
+
+    public static void startCounting()
+    {
+        counting = true;
     }
 }

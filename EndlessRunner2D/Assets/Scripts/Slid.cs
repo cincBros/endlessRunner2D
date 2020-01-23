@@ -73,6 +73,6 @@ public class Slid : MonoBehaviour
 
     public bool isForPU(PU _pu)
     {
-        return _pu.name == pu.name;
+        return isVisible() && _pu.name == pu.name;
     }
 }
